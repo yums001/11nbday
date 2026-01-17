@@ -15,8 +15,17 @@
       overflow: hidden;
     }
 
+    /* Cinnamoroll background */
+    .cinn-bg {
+      position: fixed;
+      width: 80px;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     #game {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.88);
       margin: 40px auto;
       padding: 20px;
       width: 90%;
@@ -51,21 +60,13 @@
       position: absolute;
       font-size: 60px;
       opacity: 0.4;
-      animation: cloudMove 35s linear infinite;
+      animation: cloudMove 40s linear infinite;
+      z-index: 1;
     }
 
     @keyframes cloudMove {
       from { transform: translateX(-200px); }
       to { transform: translateX(120vw); }
-    }
-
-    #cinnamoroll {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      font-size: 70px;
-      opacity: 0.9;
-      z-index: 3;
     }
 
     button {
@@ -85,10 +86,7 @@
   <!-- Clouds -->
   <div class="cloud" style="top:40px;">☁️</div>
   <div class="cloud" style="top:120px; animation-duration: 45s;">☁️</div>
-  <div class="cloud" style="top:200px; animation-duration: 40s;">☁️</div>
-
-  <!-- Cinnamoroll -->
-  <div id="cinnamoroll">🐶☁️</div>
+  <div class="cloud" style="top:200px; animation-duration: 38s;">☁️</div>
 
   <!-- Game -->
   <div id="game">
@@ -98,6 +96,18 @@
   </div>
 
   <script>
+    /* ===== CINNAMOROLL BACKGROUND ===== */
+    for(let i = 0; i < 12; i++){
+      const img = document.createElement("img");
+      img.src = "cinnamoroll.png";
+      img.className = "cinn-bg";
+      img.style.top = Math.random() * 100 + "vh";
+      img.style.left = Math.random() * 100 + "vw";
+      img.style.transform = "rotate(" + (Math.random()*360) + "deg)";
+      document.body.appendChild(img);
+    }
+
+    /* ===== MINI GAME ===== */
     let level = 1;
     let heartsLeft = 0;
 
@@ -170,4 +180,5 @@
 
 </body>
 </html>
+
 
