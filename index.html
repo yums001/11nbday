@@ -9,37 +9,91 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0b1c2d;
-      color: white;
+      background: linear-gradient(180deg, #b8e7ff, #eaf6ff);
+      color: #0b3c5d;
       text-align: center;
+      overflow: hidden;
+    }
+
+    #game {
+      background: rgba(255,255,255,0.85);
+      margin: 40px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
     }
 
     #gameArea {
       position: relative;
       width: 100%;
-      height: 70vh;
+      height: 60vh;
       overflow: hidden;
+      border-radius: 15px;
     }
 
     .heart {
       position: absolute;
-      font-size: 40px;
+      font-size: 42px;
       cursor: pointer;
       animation: float linear;
     }
 
     @keyframes float {
       from { transform: translateY(100vh); }
-      to { transform: translateY(-100px); }
+      to { transform: translateY(-120px); }
+    }
+
+    .cloud {
+      position: absolute;
+      font-size: 60px;
+      opacity: 0.4;
+      animation: cloudMove 35s linear infinite;
+    }
+
+    @keyframes cloudMove {
+      from { transform: translateX(-200px); }
+      to { transform: translateX(120vw); }
+    }
+
+    #cinnamoroll {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 70px;
+      opacity: 0.9;
+      z-index: 3;
+    }
+
+    button {
+      background: #6ecbff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #003049;
     }
   </style>
 </head>
 
 <body>
 
+  <!-- Clouds -->
+  <div class="cloud" style="top:40px;">☁️</div>
+  <div class="cloud" style="top:120px; animation-duration: 45s;">☁️</div>
+  <div class="cloud" style="top:200px; animation-duration: 40s;">☁️</div>
+
+  <!-- Cinnamoroll -->
+  <div id="cinnamoroll">🐶☁️</div>
+
+  <!-- Game -->
   <div id="game">
     <h2 id="levelText">Level 1</h2>
-    <p id="instruction">Tap all the hearts 💙</p>
+    <p id="instruction">Tap all the hearts for me 💙</p>
     <div id="gameArea"></div>
   </div>
 
@@ -116,3 +170,4 @@
 
 </body>
 </html>
+
