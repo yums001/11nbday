@@ -1,177 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>For You 💙</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background: linear-gradient(to bottom, #0b1c2d, #123a63);
-  color: white;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* INTRO */
-#intro {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#intro h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-#intro p {
-  opacity: 0.85;
-  margin-bottom: 30px;
-}
-
-button {
-  background: #4fa3ff;
-  border: none;
-  padding: 12px 28px;
-  font-size: 16px;
-  border-radius: 30px;
-  cursor: pointer;
-  color: #0b1c2d;
-  font-weight: bold;
-}
-
-button:hover {
-  background: #78b9ff;
-}
-
-/* GAME */
-#game {
-  display: none;
-  height: 100vh;
-}
-
-#levelText {
-  margin-top: 15px;
-}
-
-#instruction {
-  opacity: 0.8;
-}
-
-#gameArea {
-  position: relative;
-  width: 100%;
-  height: 75vh;
-  overflow: hidden;
-}
-
-.heart {
-  position: absolute;
-  font-size: 40px;
-  cursor: pointer;
-  animation: float linear;
-}
-
-@keyframes float {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-120px); }
-}
-</style>
+<title>Intro Test</title>
 </head>
+<body style="background:#0b1c2d;color:white;text-align:center">
 
-<body>
-
-<!-- INTRO -->
 <div id="intro">
-  <h1>Hi babyyy💙</h1>
-  <p>I made something special for youuu.<br>Ready ka na po?^^</p>
-  <button onclick="startGame()">Start 💙</button>
+  <h1>INTRO WORKS 💙</h1>
+  <button onclick="start()">Start</button>
 </div>
 
-<!-- GAME -->
-<div id="game">
-  <h2 id="levelText">Level 1</h2>
-  <p id="instruction">Tap all the hearts 💙</p>
-  <div id="gameArea"></div>
+<div id="game" style="display:none">
+  <h2>GAME SCREEN</h2>
 </div>
 
 <script>
-let level = 1;
-let heartsLeft = 0;
-
-function startGame() {
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("game").style.display = "block";
-  startLevel();
-}
-
-function startLevel() {
-  document.getElementById("levelText").innerText = "Level " + level;
-  const gameArea = document.getElementById("gameArea");
-  gameArea.innerHTML = "";
-
-  if(level === 1){
-    heartsLeft = 5;
-    spawnHearts(5, 3000);
-  }
-  if(level === 2){
-    heartsLeft = 8;
-    spawnHearts(8, 2200);
-  }
-  if(level === 3){
-    heartsLeft = 12;
-    spawnHearts(12, 1500);
-  }
-}
-
-function spawnHearts(count, speed){
-  const gameArea = document.getElementById("gameArea");
-
-  for(let i = 0; i < count; i++){
-    setTimeout(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "💙";
-      heart.style.left = Math.random() * 90 + "%";
-      heart.style.animationDuration = speed + "ms";
-
-      heart.onclick = () => {
-        heart.remove();
-        heartsLeft--;
-        checkWin();
-      };
-
-      gameArea.appendChild(heart);
-    }, i * 400);
-  }
-}
-
-function checkWin(){
-  if(heartsLeft === 0){
-    if(level < 3){
-      level++;
-      setTimeout(startLevel, 800);
-    } else {
-      gameWin();
-    }
-  }
-}
-
-function gameWin(){
-  document.getElementById("game").innerHTML = `
-    <h2>You win 💙</h2>
-    <p>Just like how you always win my heart.</p>
-    <button onclick="nextStage()">Continue</button>
-  `;
-}
-
-function nextStage(){
-  alert("Next stage: Tulips 🌷");
+function start(){
+  document.getElementById("intro").style.display="none";
+  document.getElementById("game").style.display="block";
 }
 </script>
 
