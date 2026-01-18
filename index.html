@@ -9,17 +9,30 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #0b1c2d, #123a63);
-  color: white;
+  background: linear-gradient(to bottom, #8ecbff, #cfe9ff);
+  color: #0b1c2d;
   text-align: center;
   overflow: hidden;
 }
 
-/* BACKGROUND DECOR */
-.decor {
+/* CLOUD BACKGROUND */
+.cloud {
   position: absolute;
-  width: 80px;
-  opacity: 0.25;
+  width: 160px;
+  opacity: 0.35;
+  animation: floatCloud 60s linear infinite;
+}
+
+@keyframes floatCloud {
+  from { transform: translateX(-200px); }
+  to { transform: translateX(120vw); }
+}
+
+/* CINNAMOROLL DECOR */
+.cinna {
+  position: absolute;
+  width: 70px;
+  opacity: 0.4;
   pointer-events: none;
 }
 
@@ -34,16 +47,6 @@ body {
   z-index: 2;
 }
 
-#intro h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-#intro p {
-  opacity: 0.85;
-  margin-bottom: 30px;
-}
-
 button {
   background: #4fa3ff;
   border: none;
@@ -51,7 +54,7 @@ button {
   font-size: 16px;
   border-radius: 30px;
   cursor: pointer;
-  color: #0b1c2d;
+  color: white;
   font-weight: bold;
 }
 
@@ -61,14 +64,6 @@ button {
   height: 100vh;
   position: relative;
   z-index: 2;
-}
-
-#levelText {
-  margin-top: 15px;
-}
-
-#instruction {
-  opacity: 0.8;
 }
 
 #gameArea {
@@ -94,8 +89,22 @@ button {
 
 <body>
 
-<!-- BACKGROUND CINNAMOROLL -->
-<div id="background"></div>
+<!-- CLOUDS -->
+<img src="cloud.png" class="cloud" style="top:10%; animation-duration:70s;">
+<img src="cloud.png" class="cloud" style="top:40%; animation-duration:90s;">
+<img src="cloud.png" class="cloud" style="top:65%; animation-duration:80s;">
+
+<!-- CINNAMOROLL DECOR -->
+<script>
+for(let i=0;i<10;i++){
+  const img=document.createElement("img");
+  img.src="cinnamoroll.png";
+  img.className="cinna";
+  img.style.left=Math.random()*100+"%";
+  img.style.top=Math.random()*100+"%";
+  document.body.appendChild(img);
+}
+</script>
 
 <!-- INTRO -->
 <div id="intro">
@@ -107,98 +116,49 @@ button {
 <!-- GAME -->
 <div id="game">
   <h2 id="levelText">Level 1</h2>
-  <p id="instruction">Tap all the hearts 💙</p>
+  <p>Tap all the hearts 💙</p>
   <div id="gameArea"></div>
 </div>
 
 <script>
-/* BACKGROUND GENERATOR */
-const bg = document.getElementById("background");
-
-for(let i = 0; i < 12; i++){
-  const img = document.createElement("img");
-  img.src = "cinnamoroll.png";
-  img.className = "decor";
-  img.style.left = Math.random() * 100 + "%";
-  img.style.top = Math.random() * 100 + "%";
-  img.style.transform = "rotate(" + (Math.random() * 360) + "deg)";
-  bg.appendChild(img);
-}
-
-/* GAME LOGIC */
 let level = 1;
 let heartsLeft = 0;
 
-function startGame() {
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("game").style.display = "block";
+function startGame(){
+  intro.style.display="none";
+  game.style.display="block";
   startLevel();
 }
 
-function startLevel() {
-  document.getElementById("levelText").innerText = "Level " + level;
-  const gameArea = document.getElementById("gameArea");
-  gameArea.innerHTML = "";
+function startLevel(){
+  gameArea.innerHTML="";
+  if(level===1){heartsLeft=5;spawn(5,3000);}
+  else if(level===2){heartsLeft=8;spawn(8,2200);}
+  else{heartsLeft=12;spawn(12,1500);}
+}
 
-  if (level === 1) {
-    heartsLeft = 5;
-    spawnHearts(5, 3000);
-  } else if (level === 2) {
-    heartsLeft = 8;
-    spawnHearts(8, 2200);
-  } else if (level === 3) {
-    heartsLeft = 12;
-    spawnHearts(12, 1500);
+function spawn(count,speed){
+  for(let i=0;i<count;i++){
+    setTimeout(()=>{
+      const h=document.createElement("div");
+      h.className="heart";
+      h.innerText="💙";
+      h.style.left=Math.random()*90+"%";
+      h.style.animationDuration=speed+"ms";
+      h.onclick=()=>{h.remove();heartsLeft--;check();}
+      gameArea.appendChild(h);
+    },i*400);
   }
 }
 
-function spawnHearts(count, speed) {
-  const gameArea = document.getElementById("gameArea");
-
-  for (let i = 0; i < count; i++) {
-    setTimeout(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "💙";
-      heart.style.left = Math.random() * 90 + "%";
-      heart.style.animationDuration = speed + "ms";
-
-      heart.onclick = () => {
-        heart.remove();
-        heartsLeft--;
-        checkWin();
-      };
-
-      gameArea.appendChild(heart);
-    }, i * 400);
+function check(){
+  if(heartsLeft===0){
+    if(level<3){level++;setTimeout(startLevel,800);}
+    else alert("Next: Tulips 🌷");
   }
-}
-
-function checkWin() {
-  if (heartsLeft === 0) {
-    if (level < 3) {
-      level++;
-      setTimeout(startLevel, 800);
-    } else {
-      gameWin();
-    }
-  }
-}
-
-function gameWin() {
-  document.getElementById("game").innerHTML = `
-    <h2>You win 💙</h2>
-    <p>Just like how you always win my heart.</p>
-    <button onclick="nextStage()">Continue</button>
-  `;
-}
-
-function nextStage() {
-  alert("Next stage: Tulips 🌷");
 }
 </script>
 
 </body>
 </html>
-
 
