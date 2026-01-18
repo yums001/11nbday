@@ -15,6 +15,14 @@ body {
   overflow: hidden;
 }
 
+/* BACKGROUND DECOR */
+.decor {
+  position: absolute;
+  width: 80px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
 /* INTRO */
 #intro {
   height: 100vh;
@@ -22,6 +30,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 #intro h1 {
@@ -49,6 +59,8 @@ button {
 #game {
   display: none;
   height: 100vh;
+  position: relative;
+  z-index: 2;
 }
 
 #levelText {
@@ -82,6 +94,9 @@ button {
 
 <body>
 
+<!-- BACKGROUND CINNAMOROLL -->
+<div id="background"></div>
+
 <!-- INTRO -->
 <div id="intro">
   <h1>Hi love 💙</h1>
@@ -97,6 +112,20 @@ button {
 </div>
 
 <script>
+/* BACKGROUND GENERATOR */
+const bg = document.getElementById("background");
+
+for(let i = 0; i < 12; i++){
+  const img = document.createElement("img");
+  img.src = "cinnamoroll.png";
+  img.className = "decor";
+  img.style.left = Math.random() * 100 + "%";
+  img.style.top = Math.random() * 100 + "%";
+  img.style.transform = "rotate(" + (Math.random() * 360) + "deg)";
+  bg.appendChild(img);
+}
+
+/* GAME LOGIC */
 let level = 1;
 let heartsLeft = 0;
 
@@ -171,4 +200,5 @@ function nextStage() {
 
 </body>
 </html>
+
 
