@@ -9,13 +9,15 @@
 body{
   margin:0;
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(#cceaff, #f0f9ff);
+  background: linear-gradient(#b8e7ff, #eef9ff);
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow:hidden;
 }
 
+/* CARD */
 .card{
   background:white;
   padding:25px;
@@ -24,6 +26,7 @@ body{
   max-width:420px;
   text-align:center;
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  z-index:2;
 }
 
 button{
@@ -36,77 +39,93 @@ button{
   color:white;
 }
 
-button:hover{
-  background:#4bbcff;
-}
-
-.clouds{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  opacity:0.25;
-}
-
+/* CLOUDS */
 .cloud{
   position:absolute;
   font-size:60px;
-  animation: float 20s linear infinite;
+  opacity:0.35;
+  animation: moveCloud 30s linear infinite;
 }
 
-@keyframes float{
-  from{transform:translateX(-20%);}
-  to{transform:translateX(120%);}
+@keyframes moveCloud{
+  from{transform:translateX(-200px);}
+  to{transform:translateX(120vw);}
 }
 
-/* GAME */
+/* MINI GAME */
+#gameArea{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:15px;
+}
+
 .heart{
   font-size:36px;
   cursor:pointer;
 }
 
 /* TULIPS */
-.tulip{
-  font-size:40px;
-  cursor:pointer;
-  transition:transform 0.3s;
+#tulipField{
+  position:relative;
+  width:100%;
+  height:250px;
+  margin-top:20px;
 }
 
-.tulip.bloom{
-  transform:scale(1.3);
+.tulip{
+  position:absolute;
+  width:14px;
+  height:60px;
+  background:#3a7bd5;
+  border-radius:10px 10px 4px 4px;
+  animation: sway 3s ease-in-out infinite;
+}
+
+.tulip::before{
+  content:"";
+  position:absolute;
+  top:-25px;
+  left:-18px;
+  width:50px;
+  height:35px;
+  background:#4aa3ff;
+  border-radius:50% 50% 50% 50%;
+}
+
+@keyframes sway{
+  0%,100%{transform:rotate(-2deg);}
+  50%{transform:rotate(2deg);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- CLOUD BACKGROUND -->
-<div class="clouds">
-  <div class="cloud" style="top:10%; left:-10%;">☁️</div>
-  <div class="cloud" style="top:30%; left:-20%;">☁️</div>
-  <div class="cloud" style="top:60%; left:-15%;">☁️</div>
-</div>
+<!-- CLOUDS -->
+<div class="cloud" style="top:10%; left:-20%;">☁️</div>
+<div class="cloud" style="top:35%; left:-30%; animation-duration:40s;">☁️</div>
+<div class="cloud" style="top:60%; left:-25%; animation-duration:35s;">☁️</div>
 
 <!-- INTRO -->
 <div id="intro" class="card">
   <h2>Hi 💙</h2>
-  <p>I made something for you</p>
+  <p>I made this just for you</p>
   <button onclick="startGame()">Start</button>
 </div>
 
-<!-- GAME -->
+<!-- MINI GAME -->
 <div id="game" class="card" style="display:none;">
-  <h2>Tap all the hearts 💙</h2>
-  <div id="gameArea" style="display:flex;flex-wrap:wrap;gap:15px;justify-content:center;"></div>
+  <h2>Tap all the hearts</h2>
+  <div id="gameArea"></div>
 </div>
 
-<!-- TULIPS -->
+<!-- TULIPS (ANIMATION ONLY) -->
 <div id="tulips" class="card" style="display:none;">
-  <h2>For you 🌷</h2>
-  <p>Tap all the tulips I picked</p>
-  <div id="tulipArea" style="display:flex;flex-wrap:wrap;gap:15px;justify-content:center;"></div>
+  <h2>These are for you</h2>
+  <p>18 blue tulips 🌸</p>
+  <div id="tulipField"></div>
 </div>
 
 <script>
@@ -114,27 +133,27 @@ button:hover{
 function startGame(){
   document.getElementById("intro").style.display="none";
   document.getElementById("game").style.display="block";
-  generateHearts();
+  spawnHearts();
 }
 
 /* MINI GAME */
-let tapped = 0;
+let collected=0;
 
-function generateHearts(){
-  const area = document.getElementById("gameArea");
+function spawnHearts(){
+  const area=document.getElementById("gameArea");
   area.innerHTML="";
-  tapped=0;
+  collected=0;
 
-  for(let i=0;i<10;i++){
-    const h = document.createElement("div");
+  for(let i=0;i<8;i++){
+    const h=document.createElement("div");
     h.className="heart";
     h.innerText="💙";
 
     h.onclick=()=>{
       h.innerText="✨";
-      tapped++;
-      if(tapped===10){
-        setTimeout(nextStage,600);
+      collected++;
+      if(collected===8){
+        setTimeout(showTulips,700);
       }
     };
     area.appendChild(h);
@@ -142,42 +161,27 @@ function generateHearts(){
 }
 
 /* GAME → TULIPS */
-function nextStage(){
+function showTulips(){
   document.getElementById("game").style.display="none";
   document.getElementById("tulips").style.display="block";
   generateTulips();
 }
 
-/* TULIPS */
-let bloomed=0;
-
+/* 18 BLUE TULIPS (ANIMATED ONLY) */
 function generateTulips(){
-  const area=document.getElementById("tulipArea");
-  area.innerHTML="";
-  bloomed=0;
+  const field=document.getElementById("tulipField");
+  field.innerHTML="";
 
-  for(let i=0;i<17;i++){
+  for(let i=0;i<18;i++){
     const t=document.createElement("div");
     t.className="tulip";
-    t.innerText="🌷";
-
-    t.onclick=()=>{
-      if(!t.classList.contains("bloom")){
-        t.classList.add("bloom");
-        t.innerText="💙🌷";
-        bloomed++;
-        if(bloomed===17){
-          setTimeout(()=>{
-            alert("Next: Cake 🎂");
-          },700);
-        }
-      }
-    };
-    area.appendChild(t);
+    t.style.left=Math.random()*90+"%";
+    t.style.bottom="0";
+    t.style.animationDelay=(Math.random()*2)+"s";
+    field.appendChild(t);
   }
 }
 </script>
 
 </body>
 </html>
-
