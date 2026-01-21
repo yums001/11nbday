@@ -6,97 +6,130 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  margin:0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(#b8e7ff, #eef9ff);
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
-
-/* CARD */
-.card{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  width:90%;
-  max-width:420px;
-  text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  z-index:2;
-}
-
-button{
-  background:#6ecbff;
-  border:none;
-  padding:12px 22px;
-  font-size:16px;
-  border-radius:25px;
-  cursor:pointer;
-  color:white;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #b8e7ff, #eaf6ff);
+  color: #0b3c5d;
+  text-align: center;
+  overflow: hidden;
 }
 
 /* CLOUDS */
-.cloud{
-  position:absolute;
-  font-size:60px;
-  opacity:0.35;
-  animation: moveCloud 30s linear infinite;
+.cloud {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.4;
+  animation: cloudMove 40s linear infinite;
+  z-index: 0;
 }
 
-@keyframes moveCloud{
-  from{transform:translateX(-200px);}
-  to{transform:translateX(120vw);}
+@keyframes cloudMove {
+  from { transform: translateX(-200px); }
+  to { transform: translateX(120vw); }
 }
 
-/* MINI GAME */
-#gameArea{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:15px;
-  margin-top:15px;
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.9);
+  margin: 40px auto;
+  padding: 25px 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
 }
 
-.heart{
-  font-size:36px;
-  cursor:pointer;
+/* INTRO */
+#intro {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GAME */
+#game { display: none; }
+
+#gameArea {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.heart {
+  position: absolute;
+  font-size: 42px;
+  cursor: pointer;
+  animation: float linear;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-120px); }
 }
 
 /* TULIPS */
-#tulipField{
-  position:relative;
-  width:100%;
-  height:250px;
-  margin-top:20px;
+#tulips { display: none; }
+
+#tulipField {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  margin-top: 20px;
 }
 
-.tulip{
-  position:absolute;
-  width:14px;
-  height:60px;
-  background:#3a7bd5;
-  border-radius:10px 10px 4px 4px;
+.tulip {
+  position: absolute;
+  bottom: 0;
   animation: sway 3s ease-in-out infinite;
 }
 
-.tulip::before{
-  content:"";
-  position:absolute;
-  top:-25px;
-  left:-18px;
-  width:50px;
-  height:35px;
-  background:#4aa3ff;
-  border-radius:50% 50% 50% 50%;
+/* STEM */
+.stem {
+  width: 6px;
+  height: 90px;
+  background: #3b7d3b;
+  margin: 0 auto;
 }
 
-@keyframes sway{
-  0%,100%{transform:rotate(-2deg);}
-  50%{transform:rotate(2deg);}
+/* FLOWER */
+.flower {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto -8px;
+}
+
+.petal {
+  position: absolute;
+  width: 22px;
+  height: 30px;
+  background: #4aa3ff;
+  border-radius: 50% 50% 50% 50%;
+}
+
+.petal.left { left: 0; transform: rotate(-15deg); }
+.petal.center { left: 9px; top: -5px; }
+.petal.right { right: 0; transform: rotate(15deg); }
+
+@keyframes sway {
+  0%,100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+button {
+  background: #6ecbff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #003049;
 }
 </style>
 </head>
@@ -104,70 +137,111 @@ button{
 <body>
 
 <!-- CLOUDS -->
-<div class="cloud" style="top:10%; left:-20%;">☁️</div>
-<div class="cloud" style="top:35%; left:-30%; animation-duration:40s;">☁️</div>
-<div class="cloud" style="top:60%; left:-25%; animation-duration:35s;">☁️</div>
+<div class="cloud" style="top:40px;">☁️</div>
+<div class="cloud" style="top:120px; animation-duration:45s;">☁️</div>
+<div class="cloud" style="top:200px; animation-duration:38s;">☁️</div>
 
 <!-- INTRO -->
-<div id="intro" class="card">
-  <h2>Hi 💙</h2>
-  <p>I made this just for you</p>
-  <button onclick="startGame()">Start</button>
+<div id="intro">
+  <div class="card">
+    <h2>Hi love 💙</h2>
+    <p>
+      I made something special for you.<br>
+      Happy birthday & happy 11th monthsary 🥺
+    </p>
+    <button onclick="startGame()">Start 💙</button>
+  </div>
 </div>
 
-<!-- MINI GAME -->
-<div id="game" class="card" style="display:none;">
-  <h2>Tap all the hearts</h2>
-  <div id="gameArea"></div>
+<!-- GAME (UNCHANGED) -->
+<div id="game">
+  <div class="card">
+    <h2 id="levelText">Level 1</h2>
+    <p id="instruction">Tap all the hearts for me 💙</p>
+    <div id="gameArea"></div>
+  </div>
 </div>
 
-<!-- TULIPS (ANIMATION ONLY) -->
-<div id="tulips" class="card" style="display:none;">
-  <h2>These are for you</h2>
-  <p>18 blue tulips 🌸</p>
-  <div id="tulipField"></div>
+<!-- TULIPS -->
+<div id="tulips">
+  <div class="card">
+    <h2>For you 💙</h2>
+    <p>18 blue tulips, just for you</p>
+    <div id="tulipField"></div>
+  </div>
 </div>
 
 <script>
-/* INTRO → GAME */
+/* ===== MINI GAME (AS IS) ===== */
+let level = 1;
+let heartsLeft = 0;
+
 function startGame(){
-  document.getElementById("intro").style.display="none";
-  document.getElementById("game").style.display="block";
-  spawnHearts();
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("game").style.display = "block";
+  startLevel();
 }
 
-/* MINI GAME */
-let collected=0;
+function startLevel() {
+  document.getElementById("levelText").innerText = "Level " + level;
+  const gameArea = document.getElementById("gameArea");
+  gameArea.innerHTML = "";
 
-function spawnHearts(){
-  const area=document.getElementById("gameArea");
-  area.innerHTML="";
-  collected=0;
+  if(level === 1){ heartsLeft = 5; spawnHearts(5, 3000); }
+  if(level === 2){ heartsLeft = 8; spawnHearts(8, 2000); }
+  if(level === 3){ heartsLeft = 12; spawnHearts(12, 1200); }
+}
 
-  for(let i=0;i<8;i++){
-    const h=document.createElement("div");
-    h.className="heart";
-    h.innerText="💙";
+function spawnHearts(count, speed){
+  const gameArea = document.getElementById("gameArea");
 
-    h.onclick=()=>{
-      h.innerText="✨";
-      collected++;
-      if(collected===8){
-        setTimeout(showTulips,700);
-      }
-    };
-    area.appendChild(h);
+  for(let i=0;i<count;i++){
+    setTimeout(()=>{
+      const heart=document.createElement("div");
+      heart.className="heart";
+      heart.innerText="💙";
+      heart.style.left=Math.random()*90+"%";
+      heart.style.animationDuration=speed+"ms";
+
+      heart.onclick=()=>{
+        heart.remove();
+        heartsLeft--;
+        checkWin();
+      };
+
+      gameArea.appendChild(heart);
+    }, i*400);
   }
 }
 
-/* GAME → TULIPS */
+function checkWin(){
+  if(heartsLeft===0){
+    if(level<3){
+      level++;
+      setTimeout(startLevel,800);
+    } else {
+      gameWin();
+    }
+  }
+}
+
+function gameWin(){
+  document.getElementById("game").innerHTML=`
+    <div class="card">
+      <h2>You win 💙</h2>
+      <p>Just like how you always win my heart.</p>
+      <button onclick="showTulips()">Continue</button>
+    </div>
+  `;
+}
+
+/* ===== TULIPS ===== */
 function showTulips(){
   document.getElementById("game").style.display="none";
   document.getElementById("tulips").style.display="block";
   generateTulips();
 }
 
-/* 18 BLUE TULIPS (ANIMATED ONLY) */
 function generateTulips(){
   const field=document.getElementById("tulipField");
   field.innerHTML="";
@@ -176,8 +250,17 @@ function generateTulips(){
     const t=document.createElement("div");
     t.className="tulip";
     t.style.left=Math.random()*90+"%";
-    t.style.bottom="0";
     t.style.animationDelay=(Math.random()*2)+"s";
+
+    t.innerHTML=`
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+      <div class="stem"></div>
+    `;
+
     field.appendChild(t);
   }
 }
