@@ -1,296 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>For You 💙</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, #b8e7ff, #eaf6ff);
-  color: #0b3c5d;
-  text-align: center;
-  overflow: hidden;
-}
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(#cfe9ff, #eef6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
 
-/* CLOUDS */
-.cloud {
-  position: absolute;
-  font-size: 60px;
-  opacity: 0.4;
-  animation: cloudMove 40s linear infinite;
-  z-index: 0;
-}
+  /* WHITE UI CONTAINER */
+  .ui {
+    width: 90%;
+    max-width: 420px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+  }
 
-@keyframes cloudMove {
-  from { transform: translateX(-200px); }
-  to { transform: translateX(120vw); }
-}
+  h2 {
+    margin-top: 0;
+    color: #1976d2;
+  }
 
-/* CARD */
-.card {
-  background: rgba(255,255,255,0.9);
-  margin: 40px auto;
-  padding: 25px 20px;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  position: relative;
-  z-index: 2;
-}
+  /* ---------- TULIPS SECTION ---------- */
+  #tulips-section {
+    margin-top: 30px;
+  }
 
-/* INTRO */
-#intro {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .field {
+    background: linear-gradient(#4CAF50, #2e7d32);
+    height: 220px;
+    border-radius: 16px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 10px;
+  }
 
-/* GAME */
-#game { display: none; }
+  .tulips {
+    display: flex;
+    gap: 12px;
+  }
 
-#gameArea {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  overflow: hidden;
-  border-radius: 15px;
-}
+  .tulip {
+    position: relative;
+    width: 18px;
+    height: 120px;
+    animation: sway 3s ease-in-out infinite;
+  }
 
-.heart {
-  position: absolute;
-  font-size: 42px;
-  cursor: pointer;
-  animation: float linear;
-}
+  /* STEM */
+  .tulip::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    height: 90px;
+    background: #1b5e20;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
 
-@keyframes float {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-120px); }
-}
+  /* FLOWER (BLUE TULIP) */
+  .tulip::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 28px;
+    height: 30px;
+    background: #4FC3F7;
+    border-radius: 50% 50% 40% 40%;
+    transform: translateX(-50%);
+    box-shadow:
+      -8px 6px 0 #4FC3F7,
+       8px 6px 0 #4FC3F7;
+  }
 
-/* TULIPS */
-#tulips { display: none; }
-
-#tulipField {
-  position: relative;
-  width: 100%;
-  height: 260px;
-  border-radius: 15px;
-  overflow: hidden;
-  background: #e9f7ff;
-}
-
-/* GRASS */
-#grass {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 90px;
-  background: linear-gradient(#4caf50, #2e7d32);
-  z-index: 1;
-}
-
-/* TULIP */
-.tulip {
-  position: absolute;
-  bottom: 60px;
-  z-index: 2;
-  animation: sway 3s ease-in-out infinite;
-}
-
-.stem {
-  width: 6px;
-  height: 70px;
-  background: #2e7d32;
-  margin: 0 auto;
-}
-
-.flower {
-  position: relative;
-  width: 34px;
-  height: 40px;
-  margin: 0 auto -6px;
-}
-
-.petal {
-  position: absolute;
-  width: 18px;
-  height: 28px;
-  background: #4aa3ff;
-  border-radius: 50% 50% 40% 40%;
-}
-
-.petal.left {
-  left: 0;
-  transform: rotate(-18deg);
-}
-
-.petal.center {
-  left: 8px;
-  top: -6px;
-  height: 32px;
-}
-
-.petal.right {
-  right: 0;
-  transform: rotate(18deg);
-}
-
-@keyframes sway {
-  0%,100% { transform: rotate(-2deg); }
-  50% { transform: rotate(2deg); }
-}
-
-button {
-  background: #6ecbff;
-  border: none;
-  padding: 10px 22px;
-  border-radius: 20px;
-  font-size: 16px;
-  cursor: pointer;
-  color: #003049;
-}
+  @keyframes sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(3deg); }
+  }
 </style>
 </head>
 
 <body>
 
-<!-- CLOUDS -->
-<div class="cloud" style="top:40px;">☁️</div>
-<div class="cloud" style="top:120px; animation-duration:45s;">☁️</div>
-<div class="cloud" style="top:200px; animation-duration:38s;">☁️</div>
+<div class="ui">
+  <h2>🌷 For You 🌷</h2>
 
-<!-- INTRO -->
-<div id="intro">
-  <div class="card">
-    <h2>Hi love 💙</h2>
-    <p>
-      I made something special for you.<br>
-      Happy birthday & happy 11th monthsary 🥺
-    </p>
-    <button onclick="startGame()">Start 💙</button>
-  </div>
-</div>
-
-<!-- GAME -->
-<div id="game">
-  <div class="card">
-    <h2 id="levelText">Level 1</h2>
-    <p id="instruction">Tap all the hearts for me 💙</p>
-    <div id="gameArea"></div>
-  </div>
-</div>
-
-<!-- TULIPS -->
-<div id="tulips">
-  <div class="card">
-    <h2>For you 💙</h2>
-    <p>18 blue tulips, just for you</p>
-
-    <div id="tulipField">
-      <div id="grass"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-/* MINI GAME */
-let level = 1;
-let heartsLeft = 0;
-
-function startGame(){
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("game").style.display = "block";
-  startLevel();
-}
-
-function startLevel() {
-  document.getElementById("levelText").innerText = "Level " + level;
-  const gameArea = document.getElementById("gameArea");
-  gameArea.innerHTML = "";
-
-  if(level === 1){ heartsLeft = 5; spawnHearts(5, 3000); }
-  if(level === 2){ heartsLeft = 8; spawnHearts(8, 2000); }
-  if(level === 3){ heartsLeft = 12; spawnHearts(12, 1200); }
-}
-
-function spawnHearts(count, speed){
-  const gameArea = document.getElementById("gameArea");
-
-  for(let i = 0; i < count; i++){
-    setTimeout(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "💙";
-      heart.style.left = Math.random() * 90 + "%";
-      heart.style.animationDuration = speed + "ms";
-
-      heart.onclick = () => {
-        heart.remove();
-        heartsLeft--;
-        checkWin();
-      };
-
-      gameArea.appendChild(heart);
-    }, i * 400);
-  }
-}
-
-function checkWin(){
-  if(heartsLeft === 0){
-    if(level < 3){
-      level++;
-      setTimeout(startLevel, 800);
-    } else {
-      gameWin();
-    }
-  }
-}
-
-function gameWin(){
-  document.getElementById("game").innerHTML = `
-    <div class="card">
-      <h2>You win 💙</h2>
-      <p>Just like how you always win my heart.</p>
-      <button onclick="showTulips()">Continue</button>
-    </div>
-  `;
-}
-
-/* TULIPS */
-function showTulips(){
-  document.getElementById("game").style.display = "none";
-  document.getElementById("tulips").style.display = "block";
-  generateTulips();
-}
-
-function generateTulips(){
-  const field = document.getElementById("tulipField");
-
-  for(let i = 0; i < 18; i++){
-    const t = document.createElement("div");
-    t.className = "tulip";
-    t.style.left = Math.random() * 90 + "%";
-    t.style.animationDelay = Math.random() * 2 + "s";
-
-    t.innerHTML = `
-      <div class="flower">
-        <div class="petal left"></div>
-        <div class="petal center"></div>
-        <div class="petal right"></div>
+  <!-- TULIPS -->
+  <div id="tulips-section">
+    <div class="field">
+      <div class="tulips">
+        <!-- 18 BLUE TULIPS -->
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
       </div>
-      <div class="stem"></div>
-    `;
-
-    field.appendChild(t);
-  }
-}
-</script>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
