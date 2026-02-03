@@ -1,118 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You 💙</title>
 
 <style>
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(#cfe9ff, #eef6ff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-  }
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(#cfe9ff,#eef6ff);
+  font-family:Arial, sans-serif;
+}
 
-  /* WHITE UI CONTAINER */
-  .ui {
-    width: 90%;
-    max-width: 420px;
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    text-align: center;
-  }
+/* WHITE UI */
+.ui{
+  width:90%;
+  max-width:420px;
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+  text-align:center;
+}
 
-  h2 {
-    margin-top: 0;
-    color: #1976d2;
-  }
+h2{
+  color:#1976d2;
+  margin-bottom:10px;
+}
 
-  /* ---------- TULIPS SECTION ---------- */
-  #tulips-section {
-    margin-top: 30px;
-  }
+/* FIELD */
+.field{
+  margin-top:20px;
+  height:160px;
+  background:linear-gradient(#66bb6a,#388e3c);
+  border-radius:16px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding-bottom:10px;
+  overflow:hidden;
+}
 
-  .field {
-    background: linear-gradient(#4CAF50, #2e7d32);
-    height: 220px;
-    border-radius: 16px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow: hidden;
-    padding-bottom: 10px;
-  }
+/* TULIPS WRAPPER */
+.tulips{
+  display:flex;
+  gap:10px;
+}
 
-  .tulips {
-    display: flex;
-    gap: 12px;
-  }
+/* SINGLE TULIP */
+.tulip{
+  position:relative;
+  width:26px;
+  height:120px;
+  animation:sway 3.5s ease-in-out infinite;
+}
 
-  .tulip {
-    position: relative;
-    width: 18px;
-    height: 120px;
-    animation: sway 3s ease-in-out infinite;
-  }
+/* STEM */
+.stem{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  width:4px;
+  height:75px;
+  background:linear-gradient(#1b5e20,#2e7d32);
+  transform:translateX(-50%);
+  border-radius:2px;
+}
 
-  /* STEM */
-  .tulip::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    height: 90px;
-    background: #1b5e20;
-    transform: translateX(-50%);
-    border-radius: 2px;
-  }
+/* FLOWER */
+.flower{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:26px;
+  height:28px;
+}
 
-  /* FLOWER (BLUE TULIP) */
-  .tulip::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 28px;
-    height: 30px;
-    background: #4FC3F7;
-    border-radius: 50% 50% 40% 40%;
-    transform: translateX(-50%);
-    box-shadow:
-      -8px 6px 0 #4FC3F7,
-       8px 6px 0 #4FC3F7;
-  }
+/* PETALS */
+.petal{
+  position:absolute;
+  width:16px;
+  height:22px;
+  background:linear-gradient(#64b5f6,#1e88e5);
+  border-radius:60% 60% 50% 50%;
+  box-shadow:0 4px 6px rgba(0,0,0,0.25);
+}
 
-  @keyframes sway {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(3deg); }
-  }
+.petal.left{ left:0; transform:rotate(-12deg); }
+.petal.center{ left:5px; top:-2px; }
+.petal.right{ right:0; transform:rotate(12deg); }
+
+@keyframes sway{
+  0%,100%{ transform:rotate(0deg); }
+  50%{ transform:rotate(2.5deg); }
+}
 </style>
 </head>
 
 <body>
 
 <div class="ui">
-  <h2>🌷 For You 🌷</h2>
+  <h2>🌷 Blue Tulips for You 🌷</h2>
 
-  <!-- TULIPS -->
-  <div id="tulips-section">
-    <div class="field">
-      <div class="tulips">
-        <!-- 18 BLUE TULIPS -->
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-      </div>
+  <div class="field">
+    <div class="tulips">
+
+      <!-- 18 TULIPS -->
+      <!-- COPY = 1 TULIP -->
+      <!-- repeat x18 -->
+      <!-- 1 -->
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip"><div class="flower"><div class="petal left"></div><div class="petal center"></div><div class="petal right"></div></div><div class="stem"></div></div>
+
     </div>
   </div>
 </div>
