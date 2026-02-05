@@ -1,325 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Gift for Avril</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            color: #333;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 10px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .hidden {
-            display: none;
-        }
-        .tulips {
-            position: relative;
-            height: 400px;
-            background: linear-gradient(to bottom, #87CEEB, #228B22);
-            overflow: hidden;
-        }
-        .grass {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100px;
-            background-color: #228B22;
-        }
-        .tulip {
-            position: absolute;
-            bottom: 100px;
-            width: 50px;
-            height: 100px;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgNTAgMTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTUgMTAwVjUwYzAtMTMuMyAxMC44LTI0IDI0LTI0czI0IDEwLjcgMjQgMjR2NTBaIiBmaWxsPSIjMDAwMEZGIi8+CjxjaXJjbGUgY3g9IjI1IiBjeT0iMzAiIHI9IjEwIiBmaWxsPSIjMDAwMEZGIi8+Cjwvc3ZnPg==') no-repeat center;
-            animation: sway 3s ease-in-out infinite;
-        }
-        .tulip:nth-child(odd) { animation-delay: 0.5s; }
-        .tulip:nth-child(even) { animation-delay: 1s; }
-        @keyframes sway {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(5deg); }
-        }
-        .cake {
-            width: 300px;
-            height: 200px;
-            background-color: #D2691E;
-            border-radius: 10px;
-            position: relative;
-            margin: 20px auto;
-            border: 2px solid #8B4513;
-        }
-        .candle {
-            width: 20px;
-            height: 40px;
-            background-color: #FFFACD;
-            position: absolute;
-            cursor: grab;
-            border-radius: 2px;
-        }
-        .candle.flame {
-            background-color: #FFA500;
-            height: 10px;
-            top: -10px;
-        }
-        .envelope {
-            width: 200px;
-            height: 150px;
-            background-color: #F5DEB3;
-            border: 2px solid #8B4513;
-            position: relative;
-            margin: 20px auto;
-            cursor: pointer;
-        }
-        .envelope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 100px solid transparent;
-            border-right: 100px solid transparent;
-            border-bottom: 75px solid #D2691E;
-        }
-        .letter {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #FFF;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            max-width: 80%;
-            animation: slideUp 1s ease-out;
-        }
-        @keyframes slideUp {
-            from { transform: translate(-50%, 100%); }
-            to { transform: translate(-50%, -50%); }
-        }
-        .minigame {
-            padding: 20px;
-        }
-        .heart {
-            font-size: 50px;
-            color: red;
-            cursor: pointer;
-            display: inline-block;
-            margin: 10px;
-        }
-        .collected {
-            color: pink;
-        }
-        @media (max-width: 600px) {
-            .cake { width: 250px; height: 150px; }
-            .tulip { width: 40px; height: 80px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>For You 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(180deg,#b8e7ff,#eaf6ff);
+  text-align:center;
+  overflow:hidden;
+  color:#0b3c5d;
+}
+
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  font-size:60px;
+  opacity:0.4;
+  animation:cloudMove 40s linear infinite;
+  z-index:0;
+}
+@keyframes cloudMove{
+  from{transform:translateX(-200px);}
+  to{transform:translateX(120vw);}
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.9);
+  margin:40px auto;
+  padding:25px 20px 0;
+  width:90%;
+  max-width:420px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+}
+
+/* INTRO */
+#intro{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* GAME */
+#game{display:none;}
+
+#gameArea{
+  position:relative;
+  width:100%;
+  height:60vh;
+  overflow:hidden;
+  border-radius:15px;
+}
+
+.heart{
+  position:absolute;
+  font-size:42px;
+  cursor:pointer;
+  animation:float linear;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-120px);}
+}
+
+button{
+  background:#6ecbff;
+  border:none;
+  padding:10px 22px;
+  border-radius:20px;
+  font-size:16px;
+  cursor:pointer;
+  color:#003049;
+  margin-bottom:20px;
+}
+
+/* ===== GREEN FIELD (BOTTOM ONLY) ===== */
+.field{
+  position:relative;
+  height:120px;
+  background:linear-gradient(#63b563,#3f8f3f);
+  border-radius:0 0 20px 20px;
+  margin-top:20px;
+  overflow:hidden;
+}
+
+/* TULIP CONTAINER */
+.tulips{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  align-items:flex-end;
+}
+
+/* TULIP BODY */
+.tulip{
+  position:relative;
+  width:20px;
+  height:85px;
+}
+
+/* STEM */
+.tulip::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:4px;
+  height:55px;
+  background:#2e7d32;
+  border-radius:2px;
+}
+
+/* FLOWER (3 PETAL LOOK) */
+.tulip::before{
+  content:'';
+  position:absolute;
+  bottom:48px;
+  left:50%;
+  transform:translateX(-50%);
+  width:26px;
+  height:28px;
+  background:linear-gradient(#9ed0ff,#2f80ed);
+  border-radius:50% 50% 40% 40%;
+  box-shadow:
+    -8px 0 0 -3px #4fa3ff,
+     8px 0 0 -3px #4fa3ff,
+     0 4px 6px rgba(0,0,0,0.25);
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <div id="intro">
-            <h1>Are you ready for your birthday gift?</h1>
-            <button onclick="start()">Yes</button>
-            <button onclick="no()">No</button>
-        </div>
 
-        <div id="minigame" class="hidden">
-            <h2>Minigame: Collect 11 Hearts for Our 11 Months!</h2>
-            <p>Click on the hearts to collect them. Collect all 11 to proceed!</p>
-            <div id="hearts">
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-                <span class="heart" onclick="collect(this)">❤️</span>
-            </div>
-            <p id="count">Hearts collected: 0/11</p>
-        </div>
+<!-- CLOUDS -->
+<div class="cloud" style="top:40px;">☁️</div>
+<div class="cloud" style="top:120px;animation-duration:45s;">☁️</div>
+<div class="cloud" style="top:200px;animation-duration:38s;">☁️</div>
 
-        <div id="tulips" class="hidden">
-            <h2>17 Blue Tulips for You</h2>
-            <div class="grass"></div>
-            <div class="tulip" style="left: 10%;"></div>
-            <div class="tulip" style="left: 20%;"></div>
-            <div class="tulip" style="left: 30%;"></div>
-            <div class="tulip" style="left: 40%;"></div>
-            <div class="tulip" style="left: 50%;"></div>
-            <div class="tulip" style="left: 60%;"></div>
-            <div class="tulip" style="left: 70%;"></div>
-            <div class="tulip" style="left: 80%;"></div>
-            <div class="tulip" style="left: 90%;"></div>
-            <div class="tulip" style="left: 15%;"></div>
-            <div class="tulip" style="left: 25%;"></div>
-            <div class="tulip" style="left: 35%;"></div>
-            <div class="tulip" style="left: 45%;"></div>
-            <div class="tulip" style="left: 55%;"></div>
-            <div class="tulip" style="left: 65%;"></div>
-            <div class="tulip" style="left: 75%;"></div>
-            <div class="tulip" style="left: 85%;"></div>
-        </div>
+<!-- INTRO -->
+<div id="intro">
+  <div class="card">
+    <h2>Hi love 💙</h2>
+    <p>
+      I made something special for you.<br>
+      Happy birthday & happy 11th monthsary 🥺
+    </p>
+    <button onclick="startGame()">Start 💙</button>
+  </div>
+</div>
 
-        <div id="cake-section" class="hidden">
-            <h2>Your Birthday Cake</h2>
-            <div class="cake" id="cake">
-                <!-- Candles will be added here -->
-            </div>
-            <p>Drag the 17 candles to the cake, then blow them out by speaking into your microphone!</p>
-            <button id="blow-btn" class="hidden" onclick="blowCandles()">Blow Candles</button>
-        </div>
+<!-- GAME -->
+<div id="game">
+  <div class="card">
+    <h2 id="levelText">Level 1</h2>
+    <p>Tap all the hearts for me 💙</p>
+    <div id="gameArea"></div>
 
-        <div id="letter-section" class="hidden">
-            <h2>Your Letter</h2>
-            <div class="envelope" onclick="openLetter()"></div>
-            <div id="letter" class="hidden">
-                <p>Dear Avril,</p>
-                <p>[Your letter content here - you can edit this part]</p>
-                <p>Love,</p>
-                <p>Your Special Someone</p>
-            </div>
-        </div>
-
-        <div id="outro" class="hidden">
-            <h2>I hope you like it! I love you so much and happy birthday and 11th courtsary to us my avril, avi, avipotpot, bunso, master, baby, bebi, wifey, lovey, asawa ko, love of my life ko, mahal ko, love, darling, and my miss beautiful gorgeosarus ko 💙</h2>
-        </div>
+    <!-- TULIP FIELD -->
+    <div class="field">
+      <div class="tulips">
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
+      </div>
     </div>
 
-    <script>
-        let collectedHearts = 0;
-        const totalHearts = 11;
-        let candlesPlaced = 0;
-        const totalCandles = 17;
+  </div>
+</div>
 
-        function start() {
-            document.getElementById('intro').classList.add('hidden');
-            document.getElementById('minigame').classList.remove('hidden');
-        }
+<script>
+let level=1;
+let heartsLeft=0;
 
-        function no() {
-            alert("Please say yes! 😊");
-        }
+function startGame(){
+  document.getElementById("intro").style.display="none";
+  document.getElementById("game").style.display="block";
+  startLevel();
+}
 
-        function collect(heart) {
-            if (!heart.classList.contains('collected')) {
-                heart.classList.add('collected');
-                collectedHearts++;
-                document.getElementById('count').textContent = `Hearts collected: ${collectedHearts}/${totalHearts}`;
-                if (collectedHearts === totalHearts) {
-                    setTimeout(() => {
-                        document.getElementById('minigame').classList.add('hidden');
-                        document.getElementById('tulips').classList.remove('hidden');
-                        setTimeout(() => {
-                            document.getElementById('tulips').classList.add('hidden');
-                            document.getElementById('cake-section').classList.remove('hidden');
-                            createCandles();
-                        }, 5000);
-                    }, 1000);
-                }
-            }
-        }
+function startLevel(){
+  document.getElementById("levelText").innerText="Level "+level;
+  const gameArea=document.getElementById("gameArea");
+  gameArea.innerHTML="";
 
-        function createCandles() {
-            const cake = document.getElementById('cake');
-            for (let i = 0; i < totalCandles; i++) {
-                const candle = document.createElement('div');
-                candle.className = 'candle';
-                candle.style.left = `${Math.random() * 250}px`;
-                candle.style.top = `${Math.random() * 150}px`;
-                candle.draggable = true;
-                candle.addEventListener('dragstart', dragStart);
-                candle.addEventListener('dragend', dragEnd);
-                document.body.appendChild(candle);
-            }
-        }
+  if(level===1){heartsLeft=5;spawnHearts(5,3000);}
+  if(level===2){heartsLeft=8;spawnHearts(8,2000);}
+  if(level===3){heartsLeft=12;spawnHearts(12,1200);}
+}
 
-        function dragStart(e) {
-            e.dataTransfer.setData('text/plain', e.target.id || 'candle');
-        }
+function spawnHearts(count,speed){
+  const gameArea=document.getElementById("gameArea");
+  for(let i=0;i<count;i++){
+    setTimeout(()=>{
+      const heart=document.createElement("div");
+      heart.className="heart";
+      heart.innerText="💙";
+      heart.style.left=Math.random()*90+"%";
+      heart.style.animationDuration=speed+"ms";
+      heart.onclick=()=>{
+        heart.remove();
+        heartsLeft--;
+        checkWin();
+      };
+      gameArea.appendChild(heart);
+    },i*400);
+  }
+}
 
-        function dragEnd(e) {
-            const cake = document.getElementById('cake');
-            const rect = cake.getBoundingClientRect();
-            if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                e.target.style.left = `${rect.left + Math.random() * 250}px`;
-                e.target.style.top = `${rect.top + Math.random() * 150}px`;
-                e.target.classList.add('flame');
-                candlesPlaced++;
-                if (candlesPlaced === totalCandles) {
-                    document.getElementById('blow-btn').classList.remove('hidden');
-                }
-            }
-        }
+function checkWin(){
+  if(heartsLeft===0){
+    if(level<3){
+      level++;
+      setTimeout(startLevel,800);
+    }else{
+      document.querySelector("#game .card").innerHTML=`
+        <h2>You win 💙</h2>
+        <p>Just like how you always win my heart.</p>
+      `;
+    }
+  }
+}
+</script>
 
-        function blowCandles() {
-            // Simple microphone blow detection using Web Audio API
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(stream => {
-                    const audioContext = new AudioContext();
-                    const analyser = audioContext.createAnalyser();
-                    const microphone = audioContext.createMediaStreamSource(stream);
-                    microphone.connect(analyser);
-                    analyser.fftSize = 256;
-                    const bufferLength = analyser.frequencyBinCount;
-                    const dataArray = new Uint8Array(bufferLength);
-
-                    function checkBlow() {
-                        analyser.getByteFrequencyData(dataArray);
-                        const average = dataArray.reduce((a, b) => a + b) / bufferLength;
-                        if (average > 50) { // Threshold for blow detection
-                            document.querySelectorAll('.candle.flame').forEach(candle => candle.remove());
-                            audioContext.close();
-                            stream.getTracks().forEach(track => track.stop());
-                            setTimeout(() => {
-                                document.getElementById('cake-section').classList.add('hidden');
-                                document.getElementById('letter-section').classList.remove('hidden');
-                            }, 2000);
-                        } else {
-                            requestAnimationFrame(checkBlow);
-                        }
-                    }
-                    checkBlow();
-                })
-                .catch(err => {
-                    alert('Microphone access denied. Please allow access to blow the candles.');
-                });
-        }
-
-        function openLetter() {
-            document.getElementById('letter').classList.remove('hidden');
-            setTimeout(() => {
-                document.getElementById('letter-section').classList.add('hidden');
-                document.getElementById('outro').classList.remove('hidden');
-            }, 5000);
-        }
-    </script>
 </body>
 </html>
+
+
