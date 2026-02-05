@@ -1,245 +1,954 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For You 💙</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(180deg,#b8e7ff,#eaf6ff);
-  text-align:center;
-  overflow:hidden;
-  color:#0b3c5d;
-}
-
-/* CLOUDS */
-.cloud{
-  position:absolute;
-  font-size:60px;
-  opacity:0.4;
-  animation:cloudMove 40s linear infinite;
-  z-index:0;
-}
-@keyframes cloudMove{
-  from{transform:translateX(-200px);}
-  to{transform:translateX(120vw);}
-}
-
-/* CARD */
-.card{
-  background:rgba(255,255,255,0.9);
-  margin:40px auto;
-  padding:25px 20px 0;
-  width:90%;
-  max-width:420px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-  position:relative;
-  z-index:2;
-  overflow:hidden;
-}
-
-/* INTRO */
-#intro{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* GAME */
-#game{display:none;}
-
-#gameArea{
-  position:relative;
-  width:100%;
-  height:60vh;
-  overflow:hidden;
-  border-radius:15px;
-}
-
-.heart{
-  position:absolute;
-  font-size:42px;
-  cursor:pointer;
-  animation:float linear;
-}
-
-@keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-120px);}
-}
-
-button{
-  background:#6ecbff;
-  border:none;
-  padding:10px 22px;
-  border-radius:20px;
-  font-size:16px;
-  cursor:pointer;
-  color:#003049;
-  margin-bottom:20px;
-}
-
-/* ===== GREEN FIELD (BOTTOM ONLY) ===== */
-.field{
-  position:relative;
-  height:120px;
-  background:linear-gradient(#63b563,#3f8f3f);
-  border-radius:0 0 20px 20px;
-  margin-top:20px;
-  overflow:hidden;
-}
-
-/* TULIP CONTAINER */
-.tulips{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  align-items:flex-end;
-}
-
-/* TULIP BODY */
-.tulip{
-  position:relative;
-  width:20px;
-  height:85px;
-}
-
-/* STEM */
-.tulip::after{
-  content:'';
-  position:absolute;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:4px;
-  height:55px;
-  background:#2e7d32;
-  border-radius:2px;
-}
-
-/* FLOWER (3 PETAL LOOK) */
-.tulip::before{
-  content:'';
-  position:absolute;
-  bottom:48px;
-  left:50%;
-  transform:translateX(-50%);
-  width:26px;
-  height:28px;
-  background:linear-gradient(#9ed0ff,#2f80ed);
-  border-radius:50% 50% 40% 40%;
-  box-shadow:
-    -8px 0 0 -3px #4fa3ff,
-     8px 0 0 -3px #4fa3ff,
-     0 4px 6px rgba(0,0,0,0.25);
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Avril - Happy Birthday & 11 Months!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9f0ff, #e6f7ff);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-bottom: 20px;
+        }
+        
+        .section {
+            min-height: 100vh;
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .active {
+            display: flex;
+        }
+        
+        h1, h2 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+        
+        .btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: #0d62d9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-no {
+            background-color: #ff4081;
+        }
+        
+        .btn-no:hover {
+            background-color: #e91e63;
+        }
+        
+        /* Introduction Section */
+        .heart {
+            color: #ff4081;
+            font-size: 4rem;
+            margin: 20px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Minigame Section */
+        .game-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        
+        .memory-game {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .memory-card {
+            height: 80px;
+            background-color: #1a73e8;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+            background-color: #ff4081;
+        }
+        
+        .memory-card.matched {
+            background-color: #4caf50;
+            cursor: default;
+        }
+        
+        .game-instructions {
+            font-size: 1rem;
+            margin-top: 20px;
+            color: #666;
+        }
+        
+        /* Tulips Section */
+        .tulip-field {
+            width: 100%;
+            height: 60vh;
+            position: relative;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .grass {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, #4caf50, #8bc34a);
+        }
+        
+        .tulip {
+            position: absolute;
+            bottom: 30%;
+            width: 40px;
+            height: 120px;
+            z-index: 2;
+        }
+        
+        .tulip-stem {
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            width: 10px;
+            height: 100px;
+            background-color: #4caf50;
+        }
+        
+        .tulip-flower {
+            position: absolute;
+            bottom: 90px;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background-color: #1a73e8;
+            border-radius: 50% 50% 40% 40%;
+            transform-origin: bottom center;
+            animation: sway 4s ease-in-out infinite;
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        
+        /* Cake Section */
+        .cake-container {
+            width: 90%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        
+        .cake {
+            width: 250px;
+            height: 120px;
+            background: linear-gradient(to top, #f8c8dc, #f5a6c0);
+            border-radius: 20px 20px 0 0;
+            margin: 0 auto 40px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cake-top {
+            width: 270px;
+            height: 30px;
+            background-color: #ffccd5;
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+            left: -10px;
+        }
+        
+        .candle-area {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 15px;
+        }
+        
+        .candle {
+            width: 40px;
+            height: 60px;
+            background-color: #ffcc00;
+            border-radius: 5px;
+            cursor: grab;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .candle.placed {
+            position: absolute;
+            top: -70px;
+            transform: scale(0.8);
+        }
+        
+        .candle.flame {
+            background-color: #ff9800;
+        }
+        
+        .flame {
+            width: 15px;
+            height: 25px;
+            background: radial-gradient(#ffeb3b, #ff9800);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -30px;
+            left: 12px;
+            opacity: 0;
+        }
+        
+        .flame.lit {
+            opacity: 1;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        
+        .blow-instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(26, 115, 232, 0.1);
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        
+        .microphone-btn {
+            font-size: 2rem;
+            color: #1a73e8;
+            background: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .microphone-btn.listening {
+            animation: pulse 1s infinite;
+            background-color: #ff4081;
+            color: white;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Letter Section */
+        .letter-container {
+            width: 90%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        
+        .envelope {
+            width: 280px;
+            height: 180px;
+            background-color: #f5a6c0;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.5s;
+        }
+        
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+        
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.3) 50%, transparent 52%);
+            border-radius: 10px;
+        }
+        
+        .letter {
+            width: 260px;
+            height: 350px;
+            background-color: #fff9e6;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: left;
+            display: none;
+            z-index: 10;
+            overflow-y: auto;
+        }
+        
+        .letter-content {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+        }
+        
+        .letter-content h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        
+        .letter-content p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .letter.show {
+            display: block;
+            animation: slideUp 1s forwards;
+        }
+        
+        @keyframes slideUp {
+            0% { top: 50%; opacity: 0; }
+            100% { top: -180px; opacity: 1; }
+        }
+        
+        .close-letter {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+        }
+        
+        /* Outro Section */
+        .love-names {
+            background-color: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        
+        .love-names p {
+            font-size: 1.3rem;
+            margin: 10px 0;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        
+        .blue-heart {
+            color: #1a73e8;
+            font-size: 3rem;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background-color: rgba(255,255,255,0.8);
+            border: 2px solid #1a73e8;
+            color: #1a73e8;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background-color: #1a73e8;
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            p {
+                font-size: 1.1rem;
+            }
+            
+            .memory-card {
+                height: 70px;
+            }
+            
+            .tulip {
+                width: 30px;
+                height: 100px;
+            }
+            
+            .love-names p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .memory-game {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .memory-card {
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .envelope, .letter {
+                width: 95%;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Introduction Section -->
+    <section id="intro" class="section active">
+        <h1>For My Dearest Avril</h1>
+        <div class="heart">❤️</div>
+        <p>My love, today is a very special day - it's your birthday and our 11th month of being together! Are you ready for your gift?</p>
+        <div>
+            <button id="yes-btn" class="btn">Yes, my love! ❤️</button>
+            <button id="no-btn" class="btn btn-no">No, not yet...</button>
+        </div>
+    </section>
 
-<!-- CLOUDS -->
-<div class="cloud" style="top:40px;">☁️</div>
-<div class="cloud" style="top:120px;animation-duration:45s;">☁️</div>
-<div class="cloud" style="top:200px;animation-duration:38s;">☁️</div>
+    <!-- Minigame Section -->
+    <section id="minigame" class="section">
+        <h1>Memory Game - Our 11 Months Together</h1>
+        <p>Let's play a quick game! Match the pairs to reveal special moments from our 11 months together.</p>
+        
+        <div class="game-container">
+            <div class="memory-game" id="memory-game">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+            
+            <p class="game-instructions">Match all pairs to continue to your gift!</p>
+            <button id="continue-btn" class="btn" disabled>Continue to Next Surprise</button>
+        </div>
+    </section>
 
-<!-- INTRO -->
-<div id="intro">
-  <div class="card">
-    <h2>Hi love 💙</h2>
-    <p>
-      I made something special for you.<br>
-      Happy birthday & happy 11th monthsary 🥺
-    </p>
-    <button onclick="startGame()">Start 💙</button>
-  </div>
-</div>
+    <!-- Tulips Section -->
+    <section id="tulips" class="section">
+        <h1>17 Blue Tulips for You</h1>
+        <p>My love, I give you 17 blue tulips - each representing something special I love about you.</p>
+        
+        <div class="tulip-field">
+            <div class="grass"></div>
+            <!-- 17 tulips will be generated by JavaScript -->
+        </div>
+        
+        <p style="margin-top: 20px;">Blue tulips symbolize tranquility, peace, and unique love - just like what we share.</p>
+        <button id="next-cake" class="btn">Next Surprise</button>
+    </section>
 
-<!-- GAME -->
-<div id="game">
-  <div class="card">
-    <h2 id="levelText">Level 1</h2>
-    <p>Tap all the hearts for me 💙</p>
-    <div id="gameArea"></div>
+    <!-- Cake Section -->
+    <section id="cake" class="section">
+        <h1>Happy Birthday Cake!</h1>
+        <p>My love, here's a birthday cake for you with 17 candles. Drag the candles to the cake and then blow them out!</p>
+        
+        <div class="cake-container">
+            <div class="cake">
+                <div class="cake-top"></div>
+                <div id="cake-candles"></div>
+            </div>
+            
+            <div class="candle-area" id="candle-area">
+                <!-- 17 candles will be generated by JavaScript -->
+            </div>
+            
+            <div class="blow-instructions">
+                <p>Place all 17 candles on the cake, then click the microphone and blow to extinguish the candles!</p>
+                
+                <div class="microphone-btn" id="microphone">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                
+                <p id="mic-status">Click the microphone to start blowing</p>
+            </div>
+        </div>
+        
+        <button id="next-letter" class="btn" disabled>Continue to Next Surprise</button>
+    </section>
 
-    <!-- TULIP FIELD -->
-    <div class="field">
-      <div class="tulips">
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-        <div class="tulip"></div><div class="tulip"></div><div class="tulip"></div>
-      </div>
-    </div>
+    <!-- Letter Section -->
+    <section id="letter" class="section">
+        <h1>A Letter for You</h1>
+        <p>My love, tap the envelope to read a special letter just for you.</p>
+        
+        <div class="letter-container">
+            <div class="envelope" id="envelope">
+                <i class="fas fa-envelope-open-text" style="font-size: 4rem; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+            </div>
+            
+            <div class="letter" id="letter-content">
+                <button class="close-letter" id="close-letter">×</button>
+                <div class="letter-content">
+                    <h3>My Dearest Avril,</h3>
+                    <p>Happy Birthday, my love! Today marks not only the celebration of your birth but also 11 wonderful months of us being together.</p>
+                    <p>These past 11 months have been the most beautiful journey of my life. From the moment we started talking, I knew there was something special about you. Every day with you feels like a blessing, and I'm grateful for every smile, every laugh, and every moment we share.</p>
+                    <p>You've brought so much joy, love, and light into my life. You're not just my girlfriend; you're my best friend, my confidante, my partner in crime, and my greatest supporter.</p>
+                    <p>As we celebrate your birthday today, I want to remind you how incredibly special you are. You're beautiful inside and out, intelligent, kind, and have the most amazing heart. I'm so lucky to have you in my life.</p>
+                    <p>Here's to many more birthdays together, my love. Here's to many more months and years of growing together, laughing together, and loving each other more each day.</p>
+                    <p>Thank you for being you. Thank you for loving me. Thank you for everything.</p>
+                    <p>With all my love, always and forever,</p>
+                    <p style="text-align: right; margin-top: 30px;">Your loving partner<br>Who adores you more than words can express</p>
+                </div>
+            </div>
+        </div>
+        
+        <button id="next-outro" class="btn">Continue to Final Surprise</button>
+    </section>
 
-  </div>
-</div>
+    <!-- Outro Section -->
+    <section id="outro" class="section">
+        <h1>Happy Birthday & Happy 11 Months!</h1>
+        
+        <div class="love-names">
+            <p>My Avril,</p>
+            <p>My Avi,</p>
+            <p>My Avipotpot,</p>
+            <p>My Bunso,</p>
+            <p>My Master,</p>
+            <p>My Baby,</p>
+            <p>My Bebi,</p>
+            <p>My Wifey,</p>
+            <p>My Lovey,</p>
+            <p>My Asawa ko,</p>
+            <p>My Love of my life ko,</p>
+            <p>My Mahal ko,</p>
+            <p>My Love,</p>
+            <p>My Darling,</p>
+            <p>And my Miss Beautiful Gorgeosarus ko</p>
+        </div>
+        
+        <div class="blue-heart">💙</div>
+        
+        <p>I hope you liked this little website I made for you. I love you so much and happy birthday and 11th monthsary to us!</p>
+        
+        <div class="nav-buttons">
+            <button id="restart-btn" class="nav-btn">Start Over</button>
+        </div>
+    </section>
 
-<script>
-let level=1;
-let heartsLeft=0;
-
-function startGame(){
-  document.getElementById("intro").style.display="none";
-  document.getElementById("game").style.display="block";
-  startLevel();
-}
-
-function startLevel(){
-  document.getElementById("levelText").innerText="Level "+level;
-  const gameArea=document.getElementById("gameArea");
-  gameArea.innerHTML="";
-
-  if(level===1){heartsLeft=5;spawnHearts(5,3000);}
-  if(level===2){heartsLeft=8;spawnHearts(8,2000);}
-  if(level===3){heartsLeft=12;spawnHearts(12,1200);}
-}
-
-function spawnHearts(count,speed){
-  const gameArea=document.getElementById("gameArea");
-  for(let i=0;i<count;i++){
-    setTimeout(()=>{
-      const heart=document.createElement("div");
-      heart.className="heart";
-      heart.innerText="💙";
-      heart.style.left=Math.random()*90+"%";
-      heart.style.animationDuration=speed+"ms";
-      heart.onclick=()=>{
-        heart.remove();
-        heartsLeft--;
-        checkWin();
-      };
-      gameArea.appendChild(heart);
-    },i*400);
-  }
-}
-
-function checkWin(){
-  if(heartsLeft===0){
-    if(level<3){
-      level++;
-      setTimeout(startLevel,800);
-    }else{
-      document.querySelector("#game .card").innerHTML=`
-        <h2>You win 💙</h2>
-        <p>Just like how you always win my heart.</p>
-      `;
-    }
-  }
-}
-</script>
-
+    <script>
+        // Navigation between sections
+        const sections = document.querySelectorAll('.section');
+        let currentSection = 0;
+        
+        // Show specific section
+        function showSection(index) {
+            sections.forEach(section => section.classList.remove('active'));
+            sections[index].classList.add('active');
+            currentSection = index;
+        }
+        
+        // Introduction section
+        document.getElementById('yes-btn').addEventListener('click', () => {
+            showSection(1); // Minigame section
+            initMemoryGame();
+        });
+        
+        document.getElementById('no-btn').addEventListener('click', () => {
+            alert("Take your time, my love. But I really hope you'll say yes soon! ❤️");
+        });
+        
+        // Minigame section
+        function initMemoryGame() {
+            const memoryGame = document.getElementById('memory-game');
+            memoryGame.innerHTML = '';
+            
+            // Pairs for our 11 months together
+            const cards = [
+                '❤️', '❤️',
+                '🌹', '🌹',
+                '📅', '📅',
+                '🎂', '🎂',
+                '💙', '💙',
+                '🎉', '🎉',
+                '🥰', '🥰',
+                '😘', '😘',
+                '🤗', '🤗',
+                '💑', '💑',
+                '🕯️', '🕯️'
+            ];
+            
+            // Shuffle cards
+            cards.sort(() => Math.random() - 0.5);
+            
+            // Create cards
+            cards.forEach((symbol, index) => {
+                const card = document.createElement('div');
+                card.classList.add('memory-card');
+                card.dataset.symbol = symbol;
+                card.dataset.index = index;
+                
+                card.innerHTML = `<span style="opacity: 0;">${symbol}</span>`;
+                
+                card.addEventListener('click', flipCard);
+                memoryGame.appendChild(card);
+            });
+            
+            // Game logic
+            let hasFlippedCard = false;
+            let lockBoard = false;
+            let firstCard, secondCard;
+            let matchedPairs = 0;
+            
+            function flipCard() {
+                if (lockBoard) return;
+                if (this === firstCard) return;
+                
+                this.classList.add('flipped');
+                this.querySelector('span').style.opacity = '1';
+                
+                if (!hasFlippedCard) {
+                    hasFlippedCard = true;
+                    firstCard = this;
+                    return;
+                }
+                
+                secondCard = this;
+                checkForMatch();
+            }
+            
+            function checkForMatch() {
+                const isMatch = firstCard.dataset.symbol === secondCard.dataset.symbol;
+                
+                if (isMatch) {
+                    disableCards();
+                    matchedPairs++;
+                    
+                    if (matchedPairs === cards.length / 2) {
+                        document.getElementById('continue-btn').disabled = false;
+                    }
+                } else {
+                    unflipCards();
+                }
+            }
+            
+            function disableCards() {
+                firstCard.classList.add('matched');
+                secondCard.classList.add('matched');
+                firstCard.removeEventListener('click', flipCard);
+                secondCard.removeEventListener('click', flipCard);
+                resetBoard();
+            }
+            
+            function unflipCards() {
+                lockBoard = true;
+                
+                setTimeout(() => {
+                    firstCard.classList.remove('flipped');
+                    secondCard.classList.remove('flipped');
+                    firstCard.querySelector('span').style.opacity = '0';
+                    secondCard.querySelector('span').style.opacity = '0';
+                    resetBoard();
+                }, 1000);
+            }
+            
+            function resetBoard() {
+                [hasFlippedCard, lockBoard] = [false, false];
+                [firstCard, secondCard] = [null, null];
+            }
+            
+            // Continue button
+            document.getElementById('continue-btn').addEventListener('click', () => {
+                showSection(2); // Tulips section
+                createTulips();
+            });
+        }
+        
+        // Tulips section
+        function createTulips() {
+            const tulipField = document.querySelector('.tulip-field');
+            
+            // Clear any existing tulips
+            const existingTulips = tulipField.querySelectorAll('.tulip');
+            existingTulips.forEach(tulip => tulip.remove());
+            
+            // Create 17 tulips
+            for (let i = 0; i < 17; i++) {
+                const tulip = document.createElement('div');
+                tulip.classList.add('tulip');
+                
+                // Random horizontal position
+                const leftPos = Math.random() * 90 + 5; // 5% to 95%
+                
+                // Random vertical position (mostly in the middle)
+                const bottomPos = 30 + Math.random() * 10;
+                
+                // Random sway delay and duration
+                const swayDelay = Math.random() * 2;
+                const swayDuration = 3 + Math.random() * 2;
+                
+                tulip.style.left = `${leftPos}%`;
+                tulip.style.bottom = `${bottomPos}%`;
+                tulip.style.animationDelay = `${swayDelay}s`;
+                tulip.style.animationDuration = `${swayDuration}s`;
+                
+                tulip.innerHTML = `
+                    <div class="tulip-stem"></div>
+                    <div class="tulip-flower"></div>
+                `;
+                
+                tulipField.appendChild(tulip);
+            }
+            
+            // Next button
+            document.getElementById('next-cake').addEventListener('click', () => {
+                showSection(3); // Cake section
+                initCake();
+            });
+        }
+        
+        // Cake section
+        function initCake() {
+            const candleArea = document.getElementById('candle-area');
+            const cakeCandles = document.getElementById('cake-candles');
+            
+            // Clear any existing candles
+            candleArea.innerHTML = '';
+            cakeCandles.innerHTML = '';
+            
+            // Create 17 candles
+            for (let i = 0; i < 17; i++) {
+                const candle = document.createElement('div');
+                candle.classList.add('candle');
+                candle.draggable = true;
+                candle.dataset.id = i;
+                
+                // Add flame (initially hidden)
+                const flame = document.createElement('div');
+                flame.classList.add('flame');
+                flame.id = `flame-${i}`;
+                candle.appendChild(flame);
+                
+                // Make draggable
+                candle.addEventListener('dragstart', dragStart);
+                
+                candleArea.appendChild(candle);
+            }
+            
+            // Make cake a drop target
+            const cake = document.querySelector('.cake');
+            cake.addEventListener('dragover', dragOver);
+            cake.addEventListener('drop', dropCandle);
+            
+            // Variables for drag and drop
+            let draggedCandle = null;
+            
+            function dragStart(e) {
+                draggedCandle = this;
+                e.dataTransfer.setData('text/plain', this.dataset.id);
+            }
+            
+            function dragOver(e) {
+                e.preventDefault();
+            }
+            
+            function dropCandle(e) {
+                e.preventDefault();
+                if (!draggedCandle) return;
+                
+                // Remove from candle area
+                draggedCandle.remove();
+                
+                // Add to cake
+                const candleClone = draggedCandle.cloneNode(true);
+                candleClone.classList.add('placed');
+                candleClone.style.left = `${Math.random() * 80 + 10}%`;
+                
+                // Make flame visible
+                const flame = candleClone.querySelector('.flame');
+                flame.classList.add('lit');
+                
+                cakeCandles.appendChild(candleClone);
+                
+                // Check if all candles are placed
+                const remainingCandles = candleArea.querySelectorAll('.candle').length;
+                if (remainingCandles === 0) {
+                    document.getElementById('mic-status').textContent = "All candles placed! Now blow into the microphone!";
+                }
+                
+                draggedCandle = null;
+            }
+            
+            // Microphone functionality
+            const microphone = document.getElementById('microphone');
+            const micStatus = document.getElementById('mic-status');
+            let isListening = false;
+            
+            microphone.addEventListener('click', toggleMicrophone);
+            
+            function toggleMicrophone() {
+                if (!isListening) {
+                    // Start listening simulation
+                    isListening = true;
+                    microphone.classList.add('listening');
+                    micStatus.textContent = "Listening... blow into your microphone now!";
+                    
+                    // Simulate blowing out candles after 3 seconds
+                    setTimeout(() => {
+                        blowOutCandles();
+                    }, 3000);
+                }
+            }
+            
+            function blowOutCandles() {
+                // Remove all flames
+                const flames = document.querySelectorAll('.flame.lit');
+                flames.forEach(flame => {
+                    flame.style.opacity = '0';
+                    flame.classList.remove('lit');
+                });
+                
+                // Update UI
+                microphone.classList.remove('listening');
+                micStatus.innerHTML = "🎉 All candles blown out! Happy Birthday! 🎉";
+                document.getElementById('next-letter').disabled = false;
+                isListening = false;
+            }
+            
+            // Next button
+            document.getElementById('next-letter').addEventListener('click', () => {
+                showSection(4); // Letter section
+            });
+        }
+        
+        // Letter section
+        document.getElementById('envelope').addEventListener('click', () => {
+            const letter = document.getElementById('letter-content');
+            letter.classList.add('show');
+        });
+        
+        document.getElementById('close-letter').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const letter = document.getElementById('letter-content');
+            letter.classList.remove('show');
+        });
+        
+        document.getElementById('next-outro').addEventListener('click', () => {
+            showSection(5); // Outro section
+        });
+        
+        // Outro section
+        document.getElementById('restart-btn').addEventListener('click', () => {
+            showSection(0); // Back to intro
+        });
+        
+        // Initialize tulips when page loads (for when user goes back)
+        window.addEventListener('DOMContentLoaded', () => {
+            // Pre-create tulips for faster loading
+            if (document.getElementById('tulips')) {
+                createTulips();
+            }
+        });
+    </script>
 </body>
 </html>
-
 
