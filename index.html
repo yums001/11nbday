@@ -14,11 +14,42 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f9f0ff, #e6f7ff);
+            background: linear-gradient(135deg, #e6f7ff, #b3e0ff);
             color: #333;
             overflow-x: hidden;
             min-height: 100vh;
             padding-bottom: 20px;
+        }
+        
+        .decoration {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .decoration.circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #1a73e8;
+            top: 10%;
+            right: 5%;
+        }
+        
+        .decoration.square {
+            width: 100px;
+            height: 100px;
+            background-color: #4fc3f7;
+            bottom: 15%;
+            left: 5%;
+            transform: rotate(45deg);
+        }
+        
+        .decoration.heart {
+            font-size: 80px;
+            color: #1a73e8;
+            top: 70%;
+            right: 10%;
         }
         
         .section {
@@ -147,7 +178,7 @@
             color: #666;
         }
         
-        /* Tulips Section */
+        /* Tulips Section - IMPROVED */
         .tulip-field {
             width: 100%;
             height: 60vh;
@@ -162,69 +193,108 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 30%;
-            background: linear-gradient(to top, #4caf50, #8bc34a);
+            height: 40%;
+            background: linear-gradient(to top, #2e7d32, #4caf50, #8bc34a);
         }
         
         .tulip {
             position: absolute;
-            bottom: 30%;
-            width: 40px;
-            height: 120px;
+            bottom: 40%;
+            width: 50px;
+            height: 140px;
             z-index: 2;
         }
         
         .tulip-stem {
             position: absolute;
             bottom: 0;
-            left: 15px;
-            width: 10px;
-            height: 100px;
-            background-color: #4caf50;
+            left: 20px;
+            width: 6px;
+            height: 110px;
+            background: linear-gradient(to right, #388e3c, #4caf50, #66bb6a);
         }
         
         .tulip-flower {
             position: absolute;
-            bottom: 90px;
-            left: 0;
+            bottom: 100px;
+            left: 5px;
             width: 40px;
-            height: 40px;
-            background-color: #1a73e8;
-            border-radius: 50% 50% 40% 40%;
+            height: 50px;
+            background: linear-gradient(to bottom, #42a5f5, #1a73e8, #0d47a1);
+            border-radius: 60% 60% 40% 40%;
             transform-origin: bottom center;
             animation: sway 4s ease-in-out infinite;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .tulip-leaf {
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .leaf-left {
+            bottom: 50px;
+            left: 5px;
+            transform: rotate(30deg);
+        }
+        
+        .leaf-right {
+            bottom: 60px;
+            left: 25px;
+            transform: rotate(-20deg);
         }
         
         @keyframes sway {
-            0%, 100% { transform: rotate(-2deg); }
-            50% { transform: rotate(2deg); }
+            0%, 100% { transform: rotate(-3deg) translateX(-2px); }
+            50% { transform: rotate(3deg) translateX(2px); }
         }
         
-        /* Cake Section */
+        /* Cake Section - IMPROVED */
         .cake-container {
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             margin-top: 20px;
         }
         
         .cake {
-            width: 250px;
-            height: 120px;
-            background: linear-gradient(to top, #f8c8dc, #f5a6c0);
+            width: 350px;
+            height: 150px;
+            background: linear-gradient(to top, #3e2723, #5d4037, #795548);
             border-radius: 20px 20px 0 0;
             margin: 0 auto 40px;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         .cake-top {
-            width: 270px;
-            height: 30px;
-            background-color: #ffccd5;
+            width: 370px;
+            height: 40px;
+            background-color: #3e2723;
             border-radius: 50%;
             position: absolute;
-            top: -15px;
+            top: -20px;
             left: -10px;
+            box-shadow: inset 0 5px 10px rgba(255,255,255,0.1);
+        }
+        
+        .cake-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px 20px 0 0;
+            overflow: hidden;
+        }
+        
+        .cake-spot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffccbc;
+            border-radius: 50%;
         }
         
         .candle-area {
@@ -239,34 +309,32 @@
         }
         
         .candle {
-            width: 40px;
+            width: 20px;
             height: 60px;
-            background-color: #ffcc00;
-            border-radius: 5px;
+            background: linear-gradient(to bottom, #42a5f5, #1a73e8);
+            border-radius: 3px;
             cursor: grab;
             position: relative;
             transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
         .candle.placed {
             position: absolute;
-            top: -70px;
-            transform: scale(0.8);
-        }
-        
-        .candle.flame {
-            background-color: #ff9800;
+            top: -75px;
+            transform: scale(0.9);
         }
         
         .flame {
-            width: 15px;
-            height: 25px;
-            background: radial-gradient(#ffeb3b, #ff9800);
+            width: 12px;
+            height: 20px;
+            background: radial-gradient(#ffeb3b, #ff9800, #ff5722);
             border-radius: 50% 50% 20% 20%;
             position: absolute;
-            top: -30px;
-            left: 12px;
+            top: -25px;
+            left: 4px;
             opacity: 0;
+            box-shadow: 0 0 10px #ff9800;
         }
         
         .flame.lit {
@@ -276,7 +344,7 @@
         
         @keyframes flicker {
             0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            100% { transform: scale(1.1) translateX(1px); }
         }
         
         .blow-instructions {
@@ -315,23 +383,26 @@
             100% { transform: scale(1); }
         }
         
-        /* Letter Section */
+        /* Letter Section - IMPROVED */
         .letter-container {
             width: 90%;
             max-width: 500px;
             margin-top: 20px;
+            position: relative;
+            height: 300px;
         }
         
         .envelope {
             width: 280px;
             height: 180px;
-            background-color: #f5a6c0;
+            background: linear-gradient(135deg, #42a5f5, #1a73e8);
             position: relative;
             margin: 0 auto;
             border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(26, 115, 232, 0.3);
             transition: transform 0.5s;
+            z-index: 5;
         }
         
         .envelope:hover {
@@ -349,21 +420,47 @@
             border-radius: 10px;
         }
         
-        .letter {
-            width: 260px;
-            height: 350px;
-            background-color: #fff9e6;
+        .envelope-flap {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: left;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #42a5f5, #1a73e8);
+            clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .letter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
             display: none;
-            z-index: 10;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .letter-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+        
+        .letter {
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            background-color: #fff9e6;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: left;
+            position: relative;
             overflow-y: auto;
+            animation: popUp 0.5s;
         }
         
         .letter-content {
@@ -380,44 +477,48 @@
         .letter-content p {
             margin-bottom: 15px;
             font-size: 1rem;
+            text-align: justify;
         }
         
-        .letter.show {
-            display: block;
-            animation: slideUp 1s forwards;
+        @keyframes popUp {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
         
-        @keyframes slideUp {
-            0% { top: 50%; opacity: 0; }
-            100% { top: -180px; opacity: 1; }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
         
         .close-letter {
             position: absolute;
-            top: 10px;
-            right: 15px;
+            top: 15px;
+            right: 20px;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #666;
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        /* Outro Section */
-        .love-names {
+        .close-letter:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+        
+        /* Outro Section - IMPROVED */
+        .outro-container {
             background-color: white;
             border-radius: 20px;
-            padding: 25px;
+            padding: 30px;
             margin: 20px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             max-width: 500px;
-        }
-        
-        .love-names p {
-            font-size: 1.3rem;
-            margin: 10px 0;
-            color: #1a73e8;
-            font-weight: bold;
         }
         
         .blue-heart {
@@ -470,13 +571,23 @@
                 height: 70px;
             }
             
-            .tulip {
-                width: 30px;
-                height: 100px;
+            .cake {
+                width: 300px;
+                height: 130px;
             }
             
-            .love-names p {
-                font-size: 1.1rem;
+            .cake-top {
+                width: 320px;
+            }
+            
+            .tulip {
+                width: 40px;
+                height: 120px;
+            }
+            
+            .tulip-flower {
+                width: 35px;
+                height: 45px;
             }
         }
         
@@ -499,13 +610,32 @@
                 font-size: 1.5rem;
             }
             
+            .cake {
+                width: 250px;
+                height: 110px;
+            }
+            
+            .cake-top {
+                width: 270px;
+            }
+            
             .envelope, .letter {
                 width: 95%;
+            }
+            
+            .tulip {
+                width: 35px;
+                height: 110px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Background Decorations -->
+    <div class="decoration circle"></div>
+    <div class="decoration square"></div>
+    <div class="decoration heart">💙</div>
+    
     <!-- Introduction Section -->
     <section id="intro" class="section active">
         <h1>For My Dearest Avril</h1>
@@ -554,6 +684,7 @@
         <div class="cake-container">
             <div class="cake">
                 <div class="cake-top"></div>
+                <div class="cake-decoration" id="cake-decoration"></div>
                 <div id="cake-candles"></div>
             </div>
             
@@ -568,7 +699,7 @@
                     <i class="fas fa-microphone"></i>
                 </div>
                 
-                <p id="mic-status">Click the microphone to start blowing</p>
+                <p id="mic-status">Drag the blue candles to the cake</p>
             </div>
         </div>
         
@@ -578,13 +709,17 @@
     <!-- Letter Section -->
     <section id="letter" class="section">
         <h1>A Letter for You</h1>
-        <p>My love, tap the envelope to read a special letter just for you.</p>
+        <p>My love, tap the blue envelope to read a special letter just for you.</p>
         
         <div class="letter-container">
             <div class="envelope" id="envelope">
-                <i class="fas fa-envelope-open-text" style="font-size: 4rem; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
+                <div class="envelope-flap"></div>
+                <i class="fas fa-envelope-open-text" style="font-size: 3rem; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></i>
             </div>
-            
+        </div>
+        
+        <!-- Letter Overlay -->
+        <div class="letter-overlay" id="letter-overlay">
             <div class="letter" id="letter-content">
                 <button class="close-letter" id="close-letter">×</button>
                 <div class="letter-content">
@@ -608,27 +743,11 @@
     <section id="outro" class="section">
         <h1>Happy Birthday & Happy 11 Months!</h1>
         
-        <div class="love-names">
-            <p>My Avril,</p>
-            <p>My Avi,</p>
-            <p>My Avipotpot,</p>
-            <p>My Bunso,</p>
-            <p>My Master,</p>
-            <p>My Baby,</p>
-            <p>My Bebi,</p>
-            <p>My Wifey,</p>
-            <p>My Lovey,</p>
-            <p>My Asawa ko,</p>
-            <p>My Love of my life ko,</p>
-            <p>My Mahal ko,</p>
-            <p>My Love,</p>
-            <p>My Darling,</p>
-            <p>And my Miss Beautiful Gorgeosarus ko</p>
+        <div class="outro-container">
+            <p>I hope you liked this little website I made for you. I love you so much and happy birthday and 11th monthsary to us!</p>
         </div>
         
         <div class="blue-heart">💙</div>
-        
-        <p>I hope you liked this little website I made for you. I love you so much and happy birthday and 11th monthsary to us!</p>
         
         <div class="nav-buttons">
             <button id="restart-btn" class="nav-btn">Start Over</button>
@@ -763,7 +882,7 @@
             });
         }
         
-        // Tulips section
+        // Tulips section - IMPROVED
         function createTulips() {
             const tulipField = document.querySelector('.tulip-field');
             
@@ -776,11 +895,12 @@
                 const tulip = document.createElement('div');
                 tulip.classList.add('tulip');
                 
-                // Random horizontal position
-                const leftPos = Math.random() * 90 + 5; // 5% to 95%
+                // Position tulips evenly across the field
+                const leftPos = (i * 5.5) + 5; // Evenly spaced
                 
-                // Random vertical position (mostly in the middle)
-                const bottomPos = 30 + Math.random() * 10;
+                // Random height variation
+                const heightVariation = Math.random() * 20;
+                const bottomPos = 40 + heightVariation;
                 
                 // Random sway delay and duration
                 const swayDelay = Math.random() * 2;
@@ -794,6 +914,8 @@
                 tulip.innerHTML = `
                     <div class="tulip-stem"></div>
                     <div class="tulip-flower"></div>
+                    <div class="tulip-leaf leaf-left"></div>
+                    <div class="tulip-leaf leaf-right"></div>
                 `;
                 
                 tulipField.appendChild(tulip);
@@ -806,16 +928,27 @@
             });
         }
         
-        // Cake section
+        // Cake section - IMPROVED
         function initCake() {
             const candleArea = document.getElementById('candle-area');
             const cakeCandles = document.getElementById('cake-candles');
+            const cakeDecoration = document.getElementById('cake-decoration');
             
-            // Clear any existing candles
+            // Clear any existing candles and decorations
             candleArea.innerHTML = '';
             cakeCandles.innerHTML = '';
+            cakeDecoration.innerHTML = '';
             
-            // Create 17 candles
+            // Add cake decorations (chocolate spots)
+            for (let i = 0; i < 15; i++) {
+                const spot = document.createElement('div');
+                spot.classList.add('cake-spot');
+                spot.style.left = `${Math.random() * 90 + 5}%`;
+                spot.style.top = `${Math.random() * 80 + 10}%`;
+                cakeDecoration.appendChild(spot);
+            }
+            
+            // Create 17 blue candles
             for (let i = 0; i < 17; i++) {
                 const candle = document.createElement('div');
                 candle.classList.add('candle');
@@ -841,6 +974,7 @@
             
             // Variables for drag and drop
             let draggedCandle = null;
+            let placedCandles = 0;
             
             function dragStart(e) {
                 draggedCandle = this;
@@ -858,21 +992,25 @@
                 // Remove from candle area
                 draggedCandle.remove();
                 
-                // Add to cake
+                // Add to cake - position in a line
                 const candleClone = draggedCandle.cloneNode(true);
                 candleClone.classList.add('placed');
-                candleClone.style.left = `${Math.random() * 80 + 10}%`;
+                
+                // Position candles in a straight line across the cake
+                const position = (placedCandles * 20) + 10; // Evenly spaced
+                candleClone.style.left = `${position}px`;
                 
                 // Make flame visible
                 const flame = candleClone.querySelector('.flame');
                 flame.classList.add('lit');
                 
                 cakeCandles.appendChild(candleClone);
+                placedCandles++;
                 
                 // Check if all candles are placed
                 const remainingCandles = candleArea.querySelectorAll('.candle').length;
                 if (remainingCandles === 0) {
-                    document.getElementById('mic-status').textContent = "All candles placed! Now blow into the microphone!";
+                    document.getElementById('mic-status').textContent = "All candles placed! Now click the microphone and blow!";
                 }
                 
                 draggedCandle = null;
@@ -886,6 +1024,11 @@
             microphone.addEventListener('click', toggleMicrophone);
             
             function toggleMicrophone() {
+                if (placedCandles < 17) {
+                    micStatus.textContent = "Please place all 17 candles first!";
+                    return;
+                }
+                
                 if (!isListening) {
                     // Start listening simulation
                     isListening = true;
@@ -920,16 +1063,23 @@
             });
         }
         
-        // Letter section
+        // Letter section - IMPROVED
         document.getElementById('envelope').addEventListener('click', () => {
-            const letter = document.getElementById('letter-content');
-            letter.classList.add('show');
+            const letterOverlay = document.getElementById('letter-overlay');
+            letterOverlay.classList.add('active');
         });
         
         document.getElementById('close-letter').addEventListener('click', (e) => {
             e.stopPropagation();
-            const letter = document.getElementById('letter-content');
-            letter.classList.remove('show');
+            const letterOverlay = document.getElementById('letter-overlay');
+            letterOverlay.classList.remove('active');
+        });
+        
+        // Close letter when clicking outside
+        document.getElementById('letter-overlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('letter-overlay')) {
+                document.getElementById('letter-overlay').classList.remove('active');
+            }
         });
         
         document.getElementById('next-outro').addEventListener('click', () => {
@@ -951,4 +1101,3 @@
     </script>
 </body>
 </html>
-
