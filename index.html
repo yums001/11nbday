@@ -178,7 +178,7 @@
             color: #666;
         }
         
-        /* Tulips Section - FIXED */
+        /* Tulips Section - COMPLETELY FIXED */
         .tulip-field {
             width: 100%;
             height: 60vh;
@@ -187,21 +187,83 @@
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            background: linear-gradient(to top, #2e7d32, #4caf50, #8bc34a);
+            background: linear-gradient(to bottom, #87CEEB, #E0F7FF);
         }
         
         .grass {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 100%;
+            height: 35%;
             background: linear-gradient(to top, #2e7d32, #4caf50, #8bc34a);
+        }
+        
+        .sky {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 65%;
+            background: linear-gradient(to bottom, #87CEEB, #E0F7FF);
+        }
+        
+        .sun {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(#FFEB3B, #FF9800);
+            border-radius: 50%;
+            box-shadow: 0 0 30px #FF9800;
+            animation: sunGlow 4s infinite alternate;
+        }
+        
+        @keyframes sunGlow {
+            0% { transform: scale(1); box-shadow: 0 0 30px #FF9800; }
+            100% { transform: scale(1.05); box-shadow: 0 0 40px #FFEB3B; }
+        }
+        
+        .cloud {
+            position: absolute;
+            background-color: white;
+            border-radius: 50px;
+            opacity: 0.8;
+            animation: cloudMove 20s linear infinite;
+        }
+        
+        .cloud-1 {
+            width: 80px;
+            height: 40px;
+            top: 40px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .cloud-2 {
+            width: 100px;
+            height: 50px;
+            top: 70px;
+            left: 40%;
+            animation-delay: 5s;
+        }
+        
+        .cloud-3 {
+            width: 70px;
+            height: 35px;
+            top: 100px;
+            left: 70%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes cloudMove {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
         }
         
         .tulip {
             position: absolute;
-            bottom: 0;
-            width: 50px;
+            bottom: 35%;
+            width: 40px;
             height: 140px;
             z-index: 2;
         }
@@ -209,16 +271,16 @@
         .tulip-stem {
             position: absolute;
             bottom: 0;
-            left: 20px;
-            width: 6px;
-            height: 110px;
+            left: 15px;
+            width: 5px;
+            height: 100px;
             background: linear-gradient(to right, #388e3c, #4caf50, #66bb6a);
         }
         
         .tulip-flower {
             position: absolute;
-            bottom: 100px;
-            left: 5px;
+            bottom: 90px;
+            left: 0;
             width: 40px;
             height: 50px;
             background: linear-gradient(to bottom, #42a5f5, #1a73e8, #0d47a1);
@@ -230,22 +292,22 @@
         
         .tulip-leaf {
             position: absolute;
-            width: 25px;
-            height: 40px;
+            width: 20px;
+            height: 35px;
             background-color: #4caf50;
             border-radius: 50%;
             z-index: 1;
         }
         
         .leaf-left {
-            bottom: 50px;
+            bottom: 45px;
             left: 5px;
             transform: rotate(30deg);
         }
         
         .leaf-right {
-            bottom: 60px;
-            left: 25px;
+            bottom: 55px;
+            left: 20px;
             transform: rotate(-20deg);
         }
         
@@ -254,10 +316,10 @@
             50% { transform: rotate(3deg) translateX(2px); }
         }
         
-        /* Cake Section - FIXED */
+        /* Cake Section - FIXED WIDER */
         .cake-container {
-            width: 90%;
-            max-width: 600px;
+            width: 95%;
+            max-width: 700px;
             margin-top: 20px;
         }
         
@@ -267,8 +329,8 @@
         }
         
         .cake {
-            width: 350px;
-            height: 120px;
+            width: 450px;
+            height: 130px;
             background: linear-gradient(to top, #3e2723, #5d4037, #795548);
             border-radius: 20px 20px 0 0;
             margin: 0 auto;
@@ -277,12 +339,12 @@
         }
         
         .cake-top {
-            width: 370px;
-            height: 40px;
+            width: 470px;
+            height: 45px;
             background-color: #3e2723;
             border-radius: 50%;
             position: absolute;
-            top: -20px;
+            top: -22px;
             left: -10px;
             box-shadow: inset 0 5px 10px rgba(255,255,255,0.1);
         }
@@ -306,8 +368,8 @@
         }
         
         .candle {
-            width: 20px;
-            height: 60px;
+            width: 18px;
+            height: 55px;
             background: linear-gradient(to bottom, #42a5f5, #1a73e8);
             border-radius: 3px;
             cursor: grab;
@@ -318,17 +380,17 @@
         
         .candle.placed {
             position: absolute;
-            top: -75px;
+            top: -70px;
             transform: scale(0.9);
         }
         
         .flame {
-            width: 12px;
-            height: 20px;
+            width: 10px;
+            height: 18px;
             background: radial-gradient(#ffeb3b, #ff9800, #ff5722);
             border-radius: 50% 50% 20% 20%;
             position: absolute;
-            top: -25px;
+            top: -22px;
             left: 4px;
             opacity: 0;
             box-shadow: 0 0 10px #ff9800;
@@ -380,7 +442,7 @@
             100% { transform: scale(1); }
         }
         
-        /* Letter Section */
+        /* Letter Section - UPDATED */
         .letter-container {
             width: 90%;
             max-width: 500px;
@@ -477,6 +539,21 @@
             text-align: justify;
         }
         
+        .letter-closing {
+            margin-top: 30px;
+            text-align: right;
+            font-style: italic;
+        }
+        
+        .letter-signature {
+            margin-top: 40px;
+            text-align: left;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.3rem;
+            color: #1a73e8;
+            line-height: 1.4;
+        }
+        
         @keyframes popUp {
             0% { transform: scale(0.5); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -569,22 +646,29 @@
             }
             
             .cake {
-                width: 300px;
+                width: 380px;
                 height: 110px;
             }
             
             .cake-top {
-                width: 320px;
+                width: 400px;
+                height: 40px;
+                top: -20px;
             }
             
-            .tulip {
-                width: 40px;
-                height: 120px;
+            .tulip-field {
+                height: 50vh;
             }
             
-            .tulip-flower {
-                width: 35px;
-                height: 45px;
+            .sun {
+                width: 50px;
+                height: 50px;
+                right: 20px;
+                top: 15px;
+            }
+            
+            .cloud-1, .cloud-2, .cloud-3 {
+                transform: scale(0.8);
             }
         }
         
@@ -608,12 +692,14 @@
             }
             
             .cake {
-                width: 250px;
+                width: 320px;
                 height: 100px;
             }
             
             .cake-top {
-                width: 270px;
+                width: 340px;
+                height: 35px;
+                top: -18px;
             }
             
             .envelope, .letter {
@@ -621,8 +707,54 @@
             }
             
             .tulip {
-                width: 35px;
+                width: 30px;
                 height: 110px;
+            }
+            
+            .tulip-flower {
+                width: 30px;
+                height: 40px;
+                bottom: 70px;
+            }
+            
+            .tulip-stem {
+                height: 80px;
+            }
+            
+            .sun {
+                width: 40px;
+                height: 40px;
+                right: 15px;
+                top: 10px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .cake {
+                width: 280px;
+                height: 90px;
+            }
+            
+            .cake-top {
+                width: 300px;
+                height: 30px;
+                top: -15px;
+            }
+            
+            .tulip {
+                width: 25px;
+                height: 90px;
+            }
+            
+            .tulip-flower {
+                width: 25px;
+                height: 35px;
+                bottom: 60px;
+            }
+            
+            .tulip-stem {
+                height: 70px;
+                left: 10px;
             }
         }
     </style>
@@ -665,6 +797,12 @@
         <p>My love, I give you 17 blue tulips - each representing something special I love about you.</p>
         
         <div class="tulip-field">
+            <div class="sky">
+                <div class="sun"></div>
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+            </div>
             <div class="grass"></div>
             <!-- 17 tulips will be generated by JavaScript -->
         </div>
@@ -737,6 +875,21 @@
                     <p>Mahal sana po maging ang happy ang birthday mo po ngayon kahit na wala na po si mama elen, for sure she's happy for you and always proud of you kasi nagkaroon po siya ng maalaga at mapagmahal na apo. So don't be too much sad in your birthday(tho di naman po maiiwasan ang malungkot, it's fine po pero wag naman po sana magpakalunod sa lungkot haa, you know naman po that i'm here po and i'm always here for you po mahal ko haa).</p>
                     
                     <p>Mahal I love you so much, mahal na mahal po kita sobra mahal ko, ikaw lang po gusto kong mahalin habang buhay. Happy birthday and happy 11th courtsary to us mahal koo💙🎂😘</p>
+                    
+                    <div class="letter-closing">
+                        <p>Nagmamahal,</p>
+                    </div>
+                    
+                    <div class="letter-signature">
+                        <p>Princess Ayumi A. Naito,<br>
+                        princess, ayumi, naito,<br>
+                        yumipotpot, yumisaurus, boss,<br>
+                        coffeemate, ate yumi,<br>
+                        babyateyumi mo, baby mo,<br>
+                        bebi mo, love mo, mahal mo,<br>
+                        asawa mo, future hubby mo,<br>
+                        dadi mo, at palangga mo.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -887,37 +1040,39 @@
             });
         }
         
-        // Tulips section - FIXED
+        // Tulips section - COMPLETELY FIXED
         function createTulips() {
             const tulipField = document.querySelector('.tulip-field');
             
-            // Clear any existing tulips
+            // Clear any existing tulips (but keep sky, sun, clouds and grass)
             const existingTulips = tulipField.querySelectorAll('.tulip');
             existingTulips.forEach(tulip => tulip.remove());
             
-            // Create 17 tulips - NOT RANDOMIZED, IN ORDER
+            // Create 17 tulips - IN ORDER, NOT RANDOM
             for (let i = 0; i < 17; i++) {
                 const tulip = document.createElement('div');
                 tulip.classList.add('tulip');
                 
                 // Position tulips evenly across the field IN ORDER
-                const leftPos = (i * 5.5) + 3; // Evenly spaced, starting from 3%
+                const leftPos = (i * 5.5) + 4; // Evenly spaced, starting from 4%
                 
-                // Height variation - NOT RANDOM, just slight variation
-                const heightVariation = (i % 3) * 5; // Patterned variation: 0, 5, 10, 0, 5, 10...
-                const bottomPos = 0; // BOTTOM IS 0 - TOUCHING THE GRASS FIELD
+                // Height variation - NOT RANDOM, just slight patterned variation
+                const heightVariation = (i % 4) * 3; // Pattern: 0, 3, 6, 9, 0, 3, 6, 9...
                 
                 // Sway delay and duration - patterned, not random
-                const swayDelay = (i % 5) * 0.5; // Patterned: 0, 0.5, 1, 1.5, 2, 0...
-                const swayDuration = 3 + (i % 3); // Patterned: 3, 4, 5, 3, 4, 5...
+                const swayDelay = (i % 6) * 0.3; // Patterned: 0, 0.3, 0.6, 0.9, 1.2, 1.5, 0...
+                const swayDuration = 3.5 + (i % 3) * 0.5; // Patterned: 3.5, 4, 4.5, 3.5, 4, 4.5...
                 
                 tulip.style.left = `${leftPos}%`;
-                tulip.style.bottom = `${bottomPos}%`;
                 tulip.style.animationDelay = `${swayDelay}s`;
                 tulip.style.animationDuration = `${swayDuration}s`;
                 
+                // Tulip height based on position for more natural look
+                const tulipHeight = 80 + (i % 5) * 10;
+                tulip.style.height = `${tulipHeight}px`;
+                
                 tulip.innerHTML = `
-                    <div class="tulip-stem"></div>
+                    <div class="tulip-stem" style="height: ${tulipHeight - 40}px;"></div>
                     <div class="tulip-flower"></div>
                     <div class="tulip-leaf leaf-left"></div>
                     <div class="tulip-leaf leaf-right"></div>
@@ -933,7 +1088,7 @@
             });
         }
         
-        // Cake section - FIXED
+        // Cake section - FIXED WIDER
         function initCake() {
             const candleArea = document.getElementById('candle-area');
             const cakeCandles = document.getElementById('cake-candles');
@@ -943,12 +1098,12 @@
             cakeCandles.innerHTML = '';
             
             // Create chocolate drips for the cake
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 10; i++) {
                 const drip = document.createElement('div');
                 drip.classList.add('chocolate-drip');
-                drip.style.left = `${(i * 12) + 10}%`;
-                drip.style.width = '15px';
-                drip.style.height = '20px';
+                drip.style.left = `${(i * 9) + 5}%`;
+                drip.style.width = '12px';
+                drip.style.height = `${15 + (i % 3) * 5}px`; // Varying heights
                 drip.style.top = '0px';
                 cakeCandles.appendChild(drip);
             }
@@ -997,12 +1152,13 @@
                 // Remove from candle area
                 draggedCandle.remove();
                 
-                // Add to cake - position in a line
+                // Add to cake - position in a line with better spacing
                 const candleClone = draggedCandle.cloneNode(true);
                 candleClone.classList.add('placed');
                 
-                // Position candles in a straight line across the cake
-                const position = (placedCandles * 20) + 10; // Evenly spaced
+                // Position candles in a straight line across the WIDER cake
+                // 450px cake width with 17 candles = about 26px spacing
+                const position = (placedCandles * 26) + 13; // Evenly spaced with margin
                 candleClone.style.left = `${position}px`;
                 
                 // Make flame visible
